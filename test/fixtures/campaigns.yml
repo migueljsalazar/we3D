@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  start: false
+  availability: false
+  goal: 1
+  profit: 9.99
+  title: MyString
+  description: MyString
+  length: 2015-11-05 16:28:42
+  image: 
+  price: 9.99
+
+two:
+  status: MyString
+  start: false
+  availability: false
+  goal: 1
+  profit: 9.99
+  title: MyString
+  description: MyString
+  length: 2015-11-05 16:28:42
+  image: 
+  price: 9.99
