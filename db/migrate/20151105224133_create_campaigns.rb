@@ -5,12 +5,12 @@ class CreateCampaigns < ActiveRecord::Migration
       t.boolean :start
       t.boolean :availability
       t.integer :goal
-      t.decimal :profit
+      t.integer :profit
       t.string :title
       t.string :description
       t.datetime :length
       t.binary :image
-      t.decimal :price
+      t.integer :price
 
       t.timestamps null: false
     end
