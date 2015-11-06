@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105231535) do
+ActiveRecord::Schema.define(version: 20151106212814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20151105231535) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "designers", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "profit"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "username"
+    t.string   "password_digest"
+  end
+
+  add_index "designers", ["username"], name: "index_designers_on_username", unique: true, using: :btree
+
   create_table "orders", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -38,17 +49,6 @@ ActiveRecord::Schema.define(version: 20151105231535) do
     t.string   "city"
     t.string   "zip_code"
     t.integer  "qty"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.decimal  "x"
-    t.decimal  "y"
-    t.decimal  "z"
-    t.integer  "base_cost"
-    t.integer  "profit"
-    t.boolean  "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

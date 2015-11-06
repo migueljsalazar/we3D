@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resource :designers
   get 'designers/new'
 
   # The priority is based upon order of creation: first created -> highest priority.

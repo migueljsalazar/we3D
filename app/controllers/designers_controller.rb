@@ -1,16 +1,32 @@
 class DesignersController < ApplicationController
+  before_action :set_designer, only: [:show, :edit, :update, :destroy]
+
   def new
-    @user = User.new
+    @designer = Designer.new
   end
+
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      flash[:notice] = "You signed up successfully"
-      flash[:color]= "valid"
+    @designer = Designer.new designer_params
+    if @designer.save
+      redirect_to root_path, notice: "You signed up!"
     else
       flash[:notice] = "Form is invalid"
       flash[:color]= "invalid"
+      render action:  "new"
     end
-    render "new"
   end
+
+  private
+
+  def set_designer
+      @designer = current_designer.find(params[:id])
+  end
+
+  def designer_params
+    params.
+      require(:designer).
+      permit(:username, :email, :salt, :profit, :password, :password_confirmation)
+  end
+
+
 end

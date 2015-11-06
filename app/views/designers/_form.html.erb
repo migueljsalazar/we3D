@@ -1,0 +1,46 @@
+<%= form_for @designer do |f| %>
+
+  <% if @designer.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@designer.errors.count, "error") %> prohibited
+        this designer from being saved:
+      </h2>
+      <ul>
+        <% @designer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :username %>
+    <%= f.text_field :username%>
+  </p>
+
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password%>
+  </p>
+
+  <p>
+    <%= f.label :password_Confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <p>
+  <%= f.submit :Signup %>
+  </p>
+
+<% end %>
+
+
+
+
+
