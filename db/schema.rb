@@ -41,4 +41,15 @@ ActiveRecord::Schema.define(version: 20151105230439) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "products", force: :cascade do |t|
+    t.decimal  "x"
+    t.decimal  "y"
+    t.decimal  "z"
+    t.integer  "base_cost"
+    t.integer  "profit"
+    t.boolean  "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
