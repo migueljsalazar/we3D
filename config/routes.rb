@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'suppliers/new'
+
   resource :designers
   get 'designers/new'
 
