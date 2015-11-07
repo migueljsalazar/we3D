@@ -3,9 +3,13 @@ Rails.application.routes.draw do
   root 'sessions#new'
   resource :sessions
   resource :designers
+  resource :suppliers
 
+  get 'suppliers/new'
   get 'designers/new'
   get 'sessions/new'
+
+  resource :suppliers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
