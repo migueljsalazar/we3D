@@ -7,6 +7,7 @@ class DesignersController < ApplicationController
 
   def create
     @designer = Designer.new designer_params
+
     if @designer.save
       redirect_to root_path, notice: "You signed up!"
     else
@@ -25,7 +26,7 @@ class DesignersController < ApplicationController
   def designer_params
     params.
       require(:designer).
-      permit(:username, :email, :salt, :profit, :password, :password_confirmation)
+      permit(:username, :email, :profit, :password)
   end
 
 

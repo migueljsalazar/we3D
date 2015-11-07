@@ -1,6 +1,8 @@
 class Designer < ActiveRecord::Base
   has_secure_password
-  attr_accessor :password
+  has_many :products
+  has_many :campaigns, through: :products
+
 
   EMAIL_REGEX = /.+@.+\..+/i
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
