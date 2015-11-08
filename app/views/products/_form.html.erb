@@ -4,11 +4,11 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
+    <%= f.label :product_image %>
+    <%= f.file_field :product_image %>
   </div>
   <div class="actions">
-    <%= f.submit 'Create Product' %>
-    <%= link_to 'Nevermind', friends_path, class: 'button' %>
+    <%= f.submit 'Create a Product' %>
+    <%= link_to 'Nevermind', products_path, class: 'button' %>
   </div>
 <% end %>

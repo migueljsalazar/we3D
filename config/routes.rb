@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   resource :sessions
   resource :designers
   resource :suppliers
-  resource :product
+  resource :products
 
   get 'suppliers/new'
   get 'designers/new'
   get 'sessions/new'
+  get 'products/new'
 
 
 
