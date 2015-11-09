@@ -15,7 +15,9 @@ end
   private
 
   def username_in_use
-    if Supplier.where("lower(username) = ?", self.username.downcase).first
+    if Designer.where("lower(username) = ?", self.username.downcase).first
+      errors.add(:username, "in use")
+    elsif Supplier.where("lower(username) = ?", self.username.downcase).first
       errors.add(:username, "in use")
     end
   end
