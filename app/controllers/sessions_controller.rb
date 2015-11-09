@@ -15,8 +15,7 @@ class SessionsController < ApplicationController
       session[:designer_id] = @designer.id
       redirect_to products_path
 
-    elsif
-      @supplier
+    elsif @supplier
       session[:supplier_id] = @supplier.id
       redirect_to products_path
 
