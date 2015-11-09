@@ -1,4 +1,4 @@
-class Customer < ActiveRecord::Base
+sclass Customer < ActiveRecord::Base
   has_secure_password
   has_many :orders
 

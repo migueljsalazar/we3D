@@ -20,8 +20,8 @@ class SessionsController < ApplicationController
       session[:designer_id] = @designer.id
       redirect_to products_path
 
-    elsif @supplier
-      session[:supplier_id] = @supplier.id
+    elsif @customer
+      session[:customer_id] = @customer.id
       redirect_to products_path
 
     elsif  @supplier
