@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
+  root 'welcome#index'
+
   get 'customers/new'
 
-  root 'sessions#new'
   resource :sessions
   resource :designers
   resource :suppliers
