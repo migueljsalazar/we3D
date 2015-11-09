@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       try(:authenticate, params[:password])
 
     @supplier = Supplier.
-      find_by(username: params[:username]).
+      find_by(username: params[:username].downcase).
       try(:authenticate, params[:password])
 
     if @designer
