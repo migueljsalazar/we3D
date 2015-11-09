@@ -11,8 +11,6 @@ class DesignersController < ApplicationController
     if @designer.save
       redirect_to root_path, notice: "You signed up!"
     else
-      flash[:notice] = "Form is invalid"
-      flash[:color]= "invalid"
       render action:  "new"
     end
   end
@@ -26,7 +24,7 @@ class DesignersController < ApplicationController
   def designer_params
     params.
       require(:designer).
-      permit(:username, :password, :password_confirmation)
+      permit(:username, :password, :email, :password_confirmation)
   end
 
 

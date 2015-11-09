@@ -23,7 +23,7 @@ class SuppliersController < ApplicationController
   def supplier_params
     params.
       require(:supplier).
-      permit(:username, :password, :password_confirmation)
+      permit(:username, :password, :email, :password_confirmation)
   end
 
 end
