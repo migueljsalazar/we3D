@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20151109183906) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "customers", ["username"], name: "index_customers_on_username", unique: true, using: :btree
+
   create_table "designers", force: :cascade do |t|
     t.string   "email"
     t.integer  "profit"
