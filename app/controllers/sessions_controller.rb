@@ -22,11 +22,11 @@ class SessionsController < ApplicationController
 
     elsif @supplier
       session[:supplier_id] = @supplier.id
-      redirect_to products_path
+      redirect_to orders_path
 
-    elsif  @supplier
-      session[:supplier_id] = @supplier.id
-      redirect_to products_path
+    elsif  @customer
+      session[:customer_id] = @customer.id
+      redirect_to orders_path
 
     else
       flash[:notice] = "Form is invalid"
