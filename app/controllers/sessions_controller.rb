@@ -11,11 +11,20 @@ class SessionsController < ApplicationController
       find_by(username: params[:username].downcase).
       try(:authenticate, params[:password])
 
+    @customer = Customer.
+      find_by(username: params[:username].downcase).
+      try(:authenticate, params[:password])
+
+
     if @designer
       session[:designer_id] = @designer.id
-      redirect_to desginers_path
+      redirect_to products_path
 
     elsif @supplier
+      session[:supplier_id] = @supplier.id
+      redirect_to products_path
+
+    elsif  @supplier
       session[:supplier_id] = @supplier.id
       redirect_to products_path
 
