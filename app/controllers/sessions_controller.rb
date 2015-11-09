@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     @designer = Designer.
-      find_by(username: params[:username]).
+      find_by(username: params[:username].downcase).
       try(:authenticate, params[:password])
 
     @supplier = Supplier.
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
     if @designer
       session[:designer_id] = @designer.id
-      redirect_to products_path
+      redirect_to products_new_path
 
     elsif @supplier
       session[:supplier_id] = @supplier.id
