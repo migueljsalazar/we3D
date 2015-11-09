@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
 
   def index
-    @product = current_user.products.all
+    @product = current_designer.products.all
   end
 
   def show
@@ -12,11 +12,11 @@ class ProductsController < ApplicationController
   end
 
   def new
-     @product = current_user.products.new
+     @product = current_designer.products.new
   end
 
   def create
-    @product = current_user.products.new(product_params)
+    @product = current_designer.products.new(product_params)
 
     respond_to do |format|
       if @product.save
@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
   private
 
     def set_product
-      @product = current_user.products.find(params[:id])
+      @product = current_designer.products.find(params[:id])
     end
 
 

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_customer
 
   def current_designer
-    @current_user ||= Designer.find_by(id: session[:designer_id])
+    @current_designer ||= Designer.find_by(id: session[:designer_id])
   end
 
   def current_supplier
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in
-    return true if current_user || current_supplier || current_customer
+    return true if current_designer || current_supplier || current_customer
 
     redirect_to root_path
     return false
