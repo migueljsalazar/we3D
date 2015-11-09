@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+//= require jsc3d.console
+//= require jsc3d_ie
+//= require jsc3d

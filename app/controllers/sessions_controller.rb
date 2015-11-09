@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
   def create
     @designer = Designer.
       find_by(username: params[:username]).
-      try(:authenticate, params[:password]) ||
+      try(:authenticate, params[:password])
 
-      @supplier = Supplier.
+    @supplier = Supplier.
       find_by(username: params[:username]).
       try(:authenticate, params[:password])
 

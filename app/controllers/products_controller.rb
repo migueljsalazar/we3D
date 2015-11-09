@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product, notice: 'Friend was successfully created.'
+      redirect_to @product, notice: 'image was successfully created.'
      else
        render action: 'new'
     end

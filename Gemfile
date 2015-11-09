@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip'
 gem 'aws-sdk'
 
+gem 'jsc3d-rails', '~> 1.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
