@@ -26,7 +26,7 @@ class DesignersController < ApplicationController
   def designer_params
     params.
       require(:designer).
-      permit(:username, :email, :profit, :password)
+      permit(:username, :password, :password_confirmation)
   end
 
 

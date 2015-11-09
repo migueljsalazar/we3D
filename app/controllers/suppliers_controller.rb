@@ -1,4 +1,6 @@
 class SuppliersController < ApplicationController
+ before_action :set_designer, only: [:show, :edit, :update, :destroy]
+
   def new
     @supplier = Supplier.new
   end
@@ -14,10 +16,14 @@ class SuppliersController < ApplicationController
   end
 
   private
-    def supplier_params
-      params.
-        require(:supplier).
-        permit(:username, :password, :password_confirmation)
+  def set_supplier
+      @supplier = current_supplier.find(params[:id])
+  end
+
+  def supplier_params
+    params.
+      require(:supplier).
+      permit(:username, :password, :password_confirmation)
   end
 
 end
