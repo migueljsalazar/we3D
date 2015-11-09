@@ -10,9 +10,4 @@ class Designer < ActiveRecord::Base
   validates :password, :confirmation => true #password_confirmation attr
   validates_length_of :password, :in => 6..20, :on => :create
 
-
-  def to_s
-    "#{first_name} #{last_name}"
-  end
-
 end
