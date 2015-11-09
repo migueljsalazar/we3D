@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'customers/new'
+
   root 'sessions#new'
   resource :sessions
   resource :designers
