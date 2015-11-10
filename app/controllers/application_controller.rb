@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     @current_supplier ||= Supplier.find_by(id: session[:supplier_id])
   end
 
-   def current_customer
+  def current_customer
     @current_customer ||= Customer.find_by(id: session[:customer_id])
   end
 
