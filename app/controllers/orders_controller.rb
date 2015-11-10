@@ -3,15 +3,15 @@ class OrdersController < ApplicationController
  before_action :require_logged_in, only: [:show, :edit, :update, :destroy]
 
   def index
-    @order = current_designer.orders.all
+    @order = current_campaign.orders.all
   end
 
   def new
-    @order = current_designer.orders.new
+    @order = current_campaign.orders.new
   end
 
   def create
-    @order = current_designer.orders.new(order_params)
+    @order = current_campaign.orders.new(order_params)
 
     respond_to do |format|
       if @order.save
@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = current_designer.orders.new
+    @order = current_campaign.orders.new
   end
 
   def show
@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
   private
 
   def set_order
-      @order = current_designer.orders.find(params[:id])
+      @order = current_campaign.orders.find(params[:id])
   end
 
 
