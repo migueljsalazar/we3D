@@ -18,15 +18,15 @@ class SessionsController < ApplicationController
 
     if @designer
       session[:designer_id] = @designer.id
-      redirect_to products_new_path
+      redirect_to :back
 
     elsif @supplier
       session[:supplier_id] = @supplier.id
-      redirect_to orders_path
+      redirect_to :back
 
     elsif  @customer
       session[:customer_id] = @customer.id
-      redirect_to orders_path
+      redirect_to :back
 
     else
       flash[:notice] = "Form is invalid"

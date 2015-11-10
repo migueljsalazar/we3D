@@ -1,10 +1,10 @@
 class CustomersController < ApplicationController
   def new
-  @customer = customer.new
+  @customer = Customer.new
   end
 
   def create
-    @customer = customer.new customer_params
+    @customer = Customer.new customer_params
 
     if @customer.save
       redirect_to root_path, notice: "You signed up!"

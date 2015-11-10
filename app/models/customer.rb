@@ -1,4 +1,4 @@
-class Customer < ActiveRecord::Base
+sclass Customer < ActiveRecord::Base
   has_secure_password
   has_many :orders
 
@@ -12,6 +12,10 @@ class Customer < ActiveRecord::Base
 
   def to_lower
     self.username = self.username.downcase
+  end
+
+  def to_s
+    "#{self.username.downcase}"
   end
 
   private

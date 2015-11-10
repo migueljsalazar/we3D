@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
  before_action :set_campaign, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_in
+ before_action :require_logged_in, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -8,7 +8,6 @@ class CampaignsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -29,7 +28,7 @@ class CampaignsController < ApplicationController
     end
   end
 
-   def update
+  def update
     respond_to do |format|
       if @campaign.update(campaign_params)
         format.html { redirect_to @campaign, notice: 'Campaign was successfully updated.' }
@@ -41,7 +40,7 @@ class CampaignsController < ApplicationController
     end
   end
 
-    def destroy
+  def destroy
     @campaign.destroy
     respond_to do |format|
       format.html { redirect_to campaigns_url, notice: 'Campaign was successfully destroyed.' }
@@ -51,9 +50,9 @@ class CampaignsController < ApplicationController
 
   private
 
-    def set_campaign
+  def set_campaign
       @campaign = current_designer.campaigns.find(params[:id])
-    end
+  end
 
 
   def campaign_params

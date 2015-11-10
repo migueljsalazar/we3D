@@ -1,25 +1,13 @@
 Rails.application.routes.draw do
-
-
-
   root 'welcome#index'
-
-
 
   resource :sessions
   resources :designers
   resources :suppliers
   resources :products
-  resources :campaigns
-
-  get 'suppliers/new'
-  get 'designers/new'
-  get 'sessions/new'
-  get 'products/new'
-  get 'customers/new'
-  get 'campaigns/index'
-
-
+  resources :campaigns do
+  resources :orders
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

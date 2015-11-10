@@ -16,6 +16,10 @@ class Designer < ActiveRecord::Base
     self.username = self.username.downcase
   end
 
+  def to_s
+    "#{self.username.downcase}"
+  end
+
   private
 
   def username_in_use
