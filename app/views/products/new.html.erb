@@ -5,11 +5,14 @@
         </canvas>
         <script type="text/javascript">
             var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-            viewer.setParameter('SceneUrl',         'http://download1648.mediafire.com/ifbawzfuc4cg/62lb269kwgqoaqz/oni_skull-hollow.stl');
-            viewer.setParameter('ModelColor',       'B2BCC1');
+            viewer.setParameter('SceneUrl',         'http://download1639.mediafire.com/2dctg6vg9eug/jsm1f4kb9ebu636/Falcon-prints-with-no-supports-fixed-bottom.stl');
+            viewer.setParameter('ModelColor',       '#808080');
             viewer.setParameter('BackgroundColor1', '#000000');
-            viewer.setParameter('RenderMode',       'texturesmooth')
+            viewer.setParameter('RenderMode',       'texturesmooth');
+            viewer.setParameter('CreaseAngle', '30');
             viewer.setParameter('Renderer', 'webgl');
+            viewer.setParameter('Set Definition', 'high');
+            viewer.setParameter('Background', 'off');
             viewer.init();
             viewer.update();
         </script>
