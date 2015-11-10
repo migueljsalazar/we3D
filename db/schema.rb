@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109193957) do
+ActiveRecord::Schema.define(version: 20151109221938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +77,10 @@ ActiveRecord::Schema.define(version: 20151109193957) do
     t.integer  "product_image_file_size"
     t.datetime "product_image_updated_at"
     t.string   "name"
+    t.integer  "designer_id"
   end
+
+  add_index "products", ["designer_id"], name: "index_products_on_designer_id", using: :btree
 
   create_table "suppliers", force: :cascade do |t|
     t.string   "username"
@@ -94,4 +97,5 @@ ActiveRecord::Schema.define(version: 20151109193957) do
 
   add_index "suppliers", ["username"], name: "index_suppliers_on_username", unique: true, using: :btree
 
+  add_foreign_key "products", "designers"
 end

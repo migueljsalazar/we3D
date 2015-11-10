@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
 
-  get 'customers/new'
 
-  root 'sessions#new'
+
+  root 'welcome#index'
+
+
+
   resource :sessions
   resource :designers
   resource :suppliers
   resource :products
+  resource :campaigns
 
   get 'suppliers/new'
   get 'designers/new'
   get 'sessions/new'
   get 'products/new'
+  get 'customers/new'
+  get 'campaigns/index'
 
 
 

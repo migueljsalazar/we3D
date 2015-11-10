@@ -11,4 +11,20 @@
     <%= f.submit 'Create a Product' %>
     <%= link_to 'Nevermind', products_path, class: 'button' %>
   </div>
+  <div class="field">
+    <%= f.label :x %>
+    <%= f.number_field :x %>
+  </div>
+  <div class="field">
+    <%= f.label :y %>
+    <%= f.number_field :y %>
+  </div>
+  <div class="field">
+    <%= f.label :z %>
+    <%= f.number_field :z %>
+  </div>
+  <p>
+<%= f.submit %>
+</p>
 <% end %>
+

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     @designer = Designer.
-      find_by(username: params[:username]).
+      find_by(username: params[:username].downcase).
       try(:authenticate, params[:password])
 
     @supplier = Supplier.
@@ -18,15 +18,15 @@ class SessionsController < ApplicationController
 
     if @designer
       session[:designer_id] = @designer.id
-      redirect_to products_path
+      redirect_to :back
 
-    elsif @customer
-      session[:customer_id] = @customer.id
-      redirect_to products_path
-
-    elsif  @supplier
+    elsif @supplier
       session[:supplier_id] = @supplier.id
-      redirect_to products_path
+      redirect_to :back
+
+    elsif  @customer
+      session[:customer_id] = @customer.id
+      redirect_to :back
 
     else
       flash[:notice] = "Form is invalid"
