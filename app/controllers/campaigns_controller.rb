@@ -8,7 +8,6 @@ class CampaignsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -29,7 +28,7 @@ class CampaignsController < ApplicationController
     end
   end
 
-   def update
+  def update
     respond_to do |format|
       if @campaign.update(campaign_params)
         format.html { redirect_to @campaign, notice: 'Campaign was successfully updated.' }
@@ -41,7 +40,7 @@ class CampaignsController < ApplicationController
     end
   end
 
-    def destroy
+  def destroy
     @campaign.destroy
     respond_to do |format|
       format.html { redirect_to campaigns_url, notice: 'Campaign was successfully destroyed.' }
