@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-
+    @product = current_designer.products.find(params[:id])
   end
 
   def new
