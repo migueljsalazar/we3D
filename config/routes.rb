@@ -7,10 +7,10 @@ Rails.application.routes.draw do
 
 
   resource :sessions
-  resource :designers
-  resource :suppliers
-  resource :products
-  resource :campaigns
+  resources :designers
+  resources :suppliers
+  resources :products
+  resources :campaigns
 
   get 'suppliers/new'
   get 'designers/new'
