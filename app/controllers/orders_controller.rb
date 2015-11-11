@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     @order.process_payment
     @order.save
     redirect_to @order, notice: 'order was successfully created.'
-  rescue e
+  rescue
     flash[:error] = e.message
     render :new
   end
@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:campaign, :first_name, :last_name, :address, :city, :zip_code, :qty)
+    params.require(:order).permit(:campaign_id, :customer_id, :full_name, :address, :city, :zip_code, :qty, :card_token)
   end
 
   def stripe_params

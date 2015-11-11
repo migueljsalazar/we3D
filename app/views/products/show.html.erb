@@ -3,4 +3,4 @@
 <%= image_tag @product.product_image.url %>
 
 <%= render plain: session.to_json %>
-<%= link_to 'Create Campaign', new_campaign_path(product: @product.id) %>
+<%= link_to 'Create Campaign', new_campaign_path(product_id: @product.id) %>

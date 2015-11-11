@@ -7,10 +7,6 @@
     <%= f.label :product_image %>
     <%= f.file_field :product_image %>
   </div>
-  <div class="actions">
-    <%= f.submit 'Create a Product' %>
-    <%= link_to 'Nevermind', products_path, class: 'button' %>
-  </div>
   <div class="field">
     <%= f.label :x %>
     <%= f.number_field :x %>
@@ -23,8 +19,9 @@
     <%= f.label :z %>
     <%= f.number_field :z %>
   </div>
-  <p>
-<%= f.submit %>
-</p>
+  <div class="actions">
+    <%= f.submit 'Create a Product' %>
+    <%= link_to 'Nevermind', products_path, class: 'button' %>
+  </div>
 <% end %>
 
