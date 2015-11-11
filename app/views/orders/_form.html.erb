@@ -1,0 +1,52 @@
+<%= form_for @order, html: { class: "basic-grey" } do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@order.errors.count, "error") %>
+        prohibited this order from being saved:
+      </h2>
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.hidden_field :campaign_id, value: @campaign.id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :order_id, value: @order.id %>
+  </div>
+  <div class="field">
+    <%= f.label :full_name %>
+    <%= f.text_field :full_name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :zip_code %>
+    <%= f.text_field :zip_code %>
+  </div>
+  <div class="field">
+    <%= f.label :qty %>
+    <%= f.number_field :zip_code %>
+  </div>
+  <div class="actions">
+    <script class="stripe-button"
+    src="https://checkout.stripe.com/checkout.js"
+    data-amount="<%= @campaign.price*100 %>"
+    data-description="<%= @campaign.title %>"
+    data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
+    data-locale="auto"
+    ></script>
+  </div>
+<% end %>

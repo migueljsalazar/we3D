@@ -19,10 +19,6 @@ class ApplicationController < ActionController::Base
     @current_customer ||= Customer.find_by(id: session[:customer_id])
   end
 
-  def current_campaign
-    @current_campaign ||= Campaign.find_by(params[:id])
-  end
-
   def require_logged_in
     return true if current_designer || current_supplier || current_customer
 

@@ -1,4 +1,4 @@
-<%= form_for(@campaign, multipart: true) do |f| %>
+<%= form_for(@campaign) do |f| %>
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -9,12 +9,13 @@
   </div>
   <div class="field">
     <%= f.label :length %>
-    <%= f.datetime_field :length %>
+    <%= f.date_field :length %>
   </div>
    <div class="field">
     <%= f.label :price %>
     <%= f.number_field :price %>
   </div>
+
   <p>
 <%= f.submit %>
 </p>

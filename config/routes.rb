@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
+  resources :charges
   resource :sessions
   resources :designers
   resources :suppliers
   resources :products
-  resources :campaigns do
+  resources :campaigns
   resources :orders
-  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

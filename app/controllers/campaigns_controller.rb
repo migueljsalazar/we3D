@@ -1,21 +1,25 @@
 class CampaignsController < ApplicationController
- before_action :set_campaign, only: [:show, :edit, :update, :destroy]
- before_action :require_logged_in, only: [:show, :edit, :update, :destroy]
-
+ before_action :require_logged_in, only: [:new, :edit, :update, :destroy]
+ before_action :currrent_product
 
   def index
-    @campaign = current_designer.campaigns.all
+    @campaigns = Campaign.all
   end
 
   def show
+    @campaign = Campaign.find(params[:id])
+    @order = Order.new
   end
 
   def new
-     @campaign = current_designer.campaigns.new
+     @campaign = @product.campaigns.new
+  end
+
+  def edit
   end
 
   def create
-    @campaign = current_designer.campaigns.new(campaign_params)
+    @campaign = @product.campaigns.new(campaign_params)
 
     respond_to do |format|
       if @campaign.save
@@ -51,11 +55,14 @@ class CampaignsController < ApplicationController
   private
 
   def set_campaign
-      @campaign = current_designer.campaigns.find(params[:id])
+      @campaign = current_designer.products.campaigns.find(params[:id])
   end
 
+  def current_product
+      @product = current_designer.products.find(params[:product])
+  end
 
   def campaign_params
-    params.require(:campaign).permit(:title, :length, :description, :price)
+    params.require(:campaign).permit(:product, :title, :length, :description, :price)
   end
 end
