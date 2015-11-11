@@ -3,29 +3,27 @@ class OrdersController < ApplicationController
  before_action :require_logged_in, only: [:show, :edit, :update, :destroy]
 
   def index
-    @order = current_campaign.orders.all
+    @orders = current_campaign.orders.all
   end
 
   def new
     @order = current_campaign.orders.new
+    @campaign = Campaign.find(params[:campaign_id])
   end
 
   def create
-    @order = current_campaign.orders.new(order_params)
-
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+    @order = current_campaign.orders.new order_params.merge(email: stripe_params["stripeEmail"],
+                                                               card_token: stripe_params["stripeToken"])
+    raise "Please, check order errors" unless @order.valid?
+    @order.process_payment
+    @order.save
+    redirect_to @order, notice: 'order was successfully created.'
+  rescue e
+    flash[:error] = e.message
+    render :new
   end
 
   def edit
-    @order = current_campaign.orders.new
   end
 
   def show
@@ -57,8 +55,12 @@ class OrdersController < ApplicationController
       @order = current_campaign.orders.find(params[:id])
   end
 
-
   def order_params
     params.require(:order).permit(:first_name, :last_name, :address, :city, :zip_code, :qty)
   end
+
+  def stripe_params
+  params.permit :stripeEmail, :stripeToken
+  end
+
 end

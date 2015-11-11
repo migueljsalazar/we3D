@@ -1,21 +1,25 @@
 class CampaignsController < ApplicationController
- before_action :set_campaign, only: [:show, :edit, :update, :destroy]
- before_action :require_logged_in, only: [:show, :edit, :update, :destroy]
-
+ before_action :set_campaign, only: [:edit, :update, :destroy]
+ before_action :require_logged_in, only: [:edit, :update, :destroy]
 
   def index
-    @campaign = current_designer.campaigns.all
+    @campaigns = current_designer.campaigns.all
   end
 
   def show
+    @campaign = Campaign.find(params[:id])
+    session[:campaign_id] = @campaign.id
   end
 
   def new
-     @campaign = current_designer.campaigns.new
+     @campaign = current_designer.products.campaigns.new
+  end
+
+  def edit
   end
 
   def create
-    @campaign = current_designer.campaigns.new(campaign_params)
+    @campaign = current_designer.products.campaigns.new(campaign_params)
 
     respond_to do |format|
       if @campaign.save
@@ -51,7 +55,7 @@ class CampaignsController < ApplicationController
   private
 
   def set_campaign
-      @campaign = current_designer.campaigns.find(params[:id])
+      @campaign = current_designer.products.campaigns.find(params[:id])
   end
 
 

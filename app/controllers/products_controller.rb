@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
 
   def index
-    @product = current_designer.products.all
+    @products = current_designer.products.all
   end
 
   def show
