@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
+  resources :charges
   resource :sessions
   resources :designers
   resources :suppliers
