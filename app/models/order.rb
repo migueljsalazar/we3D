@@ -9,7 +9,7 @@ class Order < ActiveRecord::Base
 
     Stripe::Charge.create customer: customer.id,
                           amount: campaign.price * 100,
-                          description: course.name,
+                          description: camgpaign.title,
                           currency: 'usd'
 
   end
