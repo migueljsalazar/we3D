@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We3d</title>
+  <title>We3D</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<% if current_designer || current_supplier || current_customer %>
- <%= link_to "Logout", '/logout' %>
-<% else %>
-  <%= link_to 'Login', '/login' %>
-<% end %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="<%= root_path %>">Home</a></li>
+        <li><a href="#">link 1</a></li>
+        <li><a href="#">link 2</a></li>
+        <li><a href="#">lnk 3</a></li>
+        <li><a href="#">link 4</a></li>
+      </ul>
+       <ul class="nav navbar-nav navbar-right">
+        <% if current_designer || current_supplier || current_customer %>
+        <li><a href="<%='/logout'%>">Logout</a></li>
+        <% else %>
+        <li><a href="<%='/login'%>"> Login</a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 
 <%= yield %>
 
