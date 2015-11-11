@@ -3,24 +3,25 @@ class OrdersController < ApplicationController
  before_action :require_logged_in, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = current_campaign.orders.all
+    @orders = Orders.all
   end
 
   def new
-    @order = current_campaign.orders.new
-    @campaign = Campaign.find(params[:campaign_id])
+    @order = Order.new
+    @order.campaign = @campaign
   end
 
   def create
-    @order = current_campaign.orders.new order_params.merge(email: stripe_params["stripeEmail"],
+    @order = Order.new(order_params).merge(email: stripe_params["stripeEmail"],
                                                                card_token: stripe_params["stripeToken"])
     raise "Please, check order errors" unless @order.valid?
     @order.process_payment
     @order.save
     redirect_to @order, notice: 'order was successfully created.'
-  rescue
+    raise
+  rescue => e
     flash[:error] = e.message
-    render :new
+    redirect_to :back
   end
 
   def edit
@@ -64,7 +65,7 @@ class OrdersController < ApplicationController
   end
 
   def stripe_params
-  params.permit :stripeEmail, :stripeToken
+      params.permit :stripeEmail, :stripeToken
   end
 
 end
