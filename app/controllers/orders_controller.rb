@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:campaign_id, :customer_id, :full_name, :address, :city, :zip_code, :qty, :card_token)
+    params.require(:order).permit(:campaign_id, :customer_id, :email, :full_name, :address, :city, :zip_code, :qty, :card_token)
   end
 
   def stripe_params
