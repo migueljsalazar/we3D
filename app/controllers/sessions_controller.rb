@@ -35,4 +35,11 @@ class SessionsController < ApplicationController
     end
   end
 
+    def destroy
+      session[:designer_id] = nil
+      session[:supplier_id] = nil
+      session[:customer_id] = nil
+      redirect_to :back
+    end
+
 end

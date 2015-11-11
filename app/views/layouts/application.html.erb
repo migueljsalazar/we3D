@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% if current_designer || current_supplier || current_customer %>
+ <%= link_to "Logout", '/logout' %>
+<% else %>
+  <%= link_to 'Login', '/login' %>
+<% end %>
+
 <%= yield %>
 
 </body>
