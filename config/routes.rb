@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resource :sessions
-  resource :designers
-  resource :suppliers
+  resources :designers
+  resources :suppliers
   resources :products
   resources :campaigns do
-    resource :orders
+  resources :orders
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
