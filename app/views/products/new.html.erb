@@ -1,18 +1,1 @@
 <%= render 'form' %>
-
- <canvas id="cv" width=640 height=480>
-        It seems you are using an outdated browser that does not support canvas :-(
-        </canvas>
-        <script type="text/javascript">
-            var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-            viewer.setParameter('SceneUrl',         'http://we3dimages.s3.amazonaws.com/products/product_images/000/000/019/original/Falcon-prints-with-no-supports-landing-gear-deployed.stl');
-            viewer.setParameter('ModelColor',       '#808080');
-            viewer.setParameter('BackgroundColor1', '#000000');
-            viewer.setParameter('RenderMode',       'texturesmooth');
-            viewer.setParameter('CreaseAngle', '30');
-            viewer.setParameter('Renderer', 'webgl');
-            viewer.setParameter('Set Definition', 'high');
-            viewer.setParameter('Background', 'off');
-            viewer.init();
-            viewer.update();
-        </script>

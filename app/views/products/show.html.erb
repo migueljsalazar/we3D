@@ -4,13 +4,13 @@
         <script type="text/javascript">
             var viewer = new JSC3D.Viewer(document.getElementById('cv'));
             viewer.setParameter('SceneUrl',         '<%= @product.product_image.url.gsub(/\?.*/, '') %>');
-            viewer.setParameter('ModelColor',       '#808080');
-            viewer.setParameter('BackgroundColor1', '#000000');
+            viewer.setParameter('ModelColor',       '#0065ca');
+            viewer.setParameter('BackgroundColor1', '#f2f2f2');
             viewer.setParameter('RenderMode',       'texturesmooth');
-            viewer.setParameter('CreaseAngle', '30');
+            viewer.setParameter('CreaseAngle', '20');
             viewer.setParameter('Renderer', 'webgl');
-            viewer.setParameter('Set Definition', 'high');
-            viewer.setParameter('Background', 'off');
+            viewer.setParameter('Definition', 'high');
+            viewer.setParameter('Background', 'off')
             viewer.init();
             viewer.update();
         </script>
