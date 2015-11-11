@@ -1,3 +1,17 @@
+ <canvas id="cv" width=640 height=480>
+        It seems you are using an outdated browser that does not support canvas :-(
+        </canvas>
+        <script type="text/javascript">
+            var viewer = new JSC3D.Viewer(document.getElementById('cv'));
+            viewer.setParameter('SceneUrl',         '<%= @product.product_image.url.gsub(/\?.*/, '') %>');
+            viewer.setParameter('ModelColor',       '#808080');
+            viewer.setParameter('BackgroundColor1', '#000000');
+            viewer.setParameter('RenderMode',       'texturesmooth');
+            viewer.setParameter('CreaseAngle', '30');
+            viewer.setParameter('Renderer', 'webgl');
+            viewer.setParameter('Set Definition', 'high');
+            viewer.setParameter('Background', 'off');
+            viewer.init();
+            viewer.update();
+        </script>
 
-
-<%= image_tag @product.product_image.url %>
