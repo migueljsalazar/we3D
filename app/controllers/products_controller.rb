@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
     end
   end
 
-    def destroy
+  def destroy
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
@@ -51,9 +51,9 @@ class ProductsController < ApplicationController
 
   private
 
-    def set_product
-      @product = current_designer.products.find(params[:id])
-    end
+  def set_product
+    @product = current_designer.products.find(params[:id])
+  end
 
 
   def product_params

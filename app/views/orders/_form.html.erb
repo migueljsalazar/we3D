@@ -25,18 +25,26 @@
     <%= f.text_field :full_name %>
   </div>
   <div class="field">
-    <%= f.label :company %>
-    <%= f.text_field :company %>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :telephone %>
-    <%= f.text_field :telephone %>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :zip_code %>
+    <%= f.text_field :zip_code %>
+  </div>
+  <div class="field">
+    <%= f.label :qty %>
+    <%= f.number_field :zip_code %>
   </div>
   <div class="actions">
     <script class="stripe-button"
     src="https://checkout.stripe.com/checkout.js"
-    data-amount="<%= campaign.price*100 %>"
-    data-description="<%= campaign.title %>"
+    data-amount="<%= @campaign.price*100 %>"
+    data-description="<%= @campaign.title %>"
     data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
     data-locale="auto"
     ></script>

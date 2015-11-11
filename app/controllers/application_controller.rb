@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_campaign
-    @current_campaign ||= Campaign.find_by(id: session[:campaign_id])
+    @current_campaign ||= Campaign.find_by(id: flash[:campaign_id])
   end
 
   def require_logged_in

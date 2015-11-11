@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
     if @designer
       session[:designer_id] = @designer.id
-      redirect_to :back
+      redirect_to new_product_path
 
     elsif @supplier
       session[:supplier_id] = @supplier.id

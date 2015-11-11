@@ -8,18 +8,19 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:id])
-    session[:campaign_id] = @campaign.id
+    @order = Order.new
   end
 
   def new
-     @campaign = current_designer.products.campaigns.new
+     @campaign = current_designer.campaigns.new
+     @product = Product.find(params[:product])
   end
 
   def edit
   end
 
   def create
-    @campaign = current_designer.products.campaigns.new(campaign_params)
+    @campaign = current_designer.campaigns.new(campaign_params)
 
     respond_to do |format|
       if @campaign.save
@@ -55,11 +56,11 @@ class CampaignsController < ApplicationController
   private
 
   def set_campaign
-      @campaign = current_designer.products.campaigns.find(params[:id])
+      @campaign = current_designer.campaigns.find(params[:id])
   end
 
 
   def campaign_params
-    params.require(:campaign).permit(:title, :length, :description, :price)
+    params.require(:campaign).permit(:product, :title, :length, :description, :price)
   end
 end

@@ -55,8 +55,12 @@ class OrdersController < ApplicationController
       @order = current_campaign.orders.find(params[:id])
   end
 
+  def current_campaign
+    @current_campaign = Campaign.find(params[:campaign_id])
+  end
+
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :address, :city, :zip_code, :qty)
+    params.require(:order).permit(:campaign, :first_name, :last_name, :address, :city, :zip_code, :qty)
   end
 
   def stripe_params
