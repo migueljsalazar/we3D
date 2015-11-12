@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
  before_action :set_order, only: [:show, :edit, :update, :destroy]
- before_action :require_logged_in, only: [:show, :edit, :update, :destroy]
+ before_action :require_logged_in, only: [:new, :show, :edit, :update, :destroy]
 
   def index
     @orders = Orders.all
@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @order.campaign = @campaign
+    @campaign = @order.campaign
   end
 
   def create

@@ -2,6 +2,14 @@
 
 <h1>Welcome to we3D</h1>
 
+<%= @campaigns.each do |campaign| %>
+<%= content_tag_for(:div, campaign) do %>
+  <%= campaign.title %><br>
+  <%= campaign.description %><br>
+  <%= campaign.length %><br>
+  <%= campaign.price %><br>
+  <%= link_to 'Show', campaign %><br>
+<% end %>
 
 <% if current_designer || current_supplier || current_customer %>
 

@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def require_logged_in
     return true if current_designer || current_supplier || current_customer
 
-    redirect_to root_path
+    format.html {notice: 'You need to Log In before you can order!' }
     return false
   end
 

@@ -15,6 +15,7 @@
       </ul>
     </div>
   <% end %>
+  <p id="notice"><%= notice %></p>
   <div class="field">
     <%= f.hidden_field :campaign_id, value: @campaign.id %>
   </div>
@@ -51,5 +52,5 @@
       data-amount="<%= @campaign.price*100 %>">
     </script>
   </div>
-        <% end %>
+<% end %>
 </div>

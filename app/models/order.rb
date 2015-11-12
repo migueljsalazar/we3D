@@ -1,6 +1,5 @@
 class Order < ActiveRecord::Base
   belongs_to :campaigns
-  belongs_to :customer
   belongs_to :supplier
 
   def process_payment
@@ -8,8 +7,8 @@ class Order < ActiveRecord::Base
                                        card: card_token
 
     Stripe::Charge.create customer: customer.id,
-                          amount: campaign.price * 100,
-                          description: camgpaign.title,
+                          amount: @campaign.price * 100,
+                          description: @camgpaign.title,
                           currency: 'usd'
 
   end

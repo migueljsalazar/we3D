@@ -1,18 +1,25 @@
 Rails.application.routes.draw do
+  #Homepage route
   root 'welcome#index'
 
+  #login - logout routes
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-
-  resources :charges
   resource :sessions
-  resources :designers
-  resources :suppliers
-  resources :products
-  resources :campaigns
-  resources :orders
 
+  #signup - user interface routes
+  resource :designers
+  resource :suppliers
+  resource :customers
+
+  #CRUD Products routes
+  resources :products
+
+  #CRUD Campaigns with nested Orders routes
+  resources :campaigns do
+    resources :orders
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
