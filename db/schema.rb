@@ -81,8 +81,12 @@ ActiveRecord::Schema.define(version: 20151112184120) do
     t.integer  "base_cost"
     t.integer  "profit"
     t.boolean  "color"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "product_image_file_name"
+    t.string   "product_image_content_type"
+    t.integer  "product_image_file_size"
+    t.datetime "product_image_updated_at"
     t.string   "name"
     t.integer  "designer_id"
     t.string   "object_file_name"
