@@ -1,15 +1,22 @@
 Rails.application.routes.draw do
+  #Homepage route
   root 'welcome#index'
 
+  #login - logout routes
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-
   resource :sessions
+
+  #signup - user interface routes
   resource :designers
   resource :suppliers
   resource :customers
+
+  #CRUD Products routes
   resources :products
+
+  #CRUD Campaigns with nested Orders routes
   resources :campaigns do
     resources :orders
   end
