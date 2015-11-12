@@ -1,4 +1,10 @@
+
+
 <h1>Welcome to we3D</h1>
 
-<h3>Log On</h3>
-<%= render 'sessions/form' %>
+
+<% if current_designer || current_supplier || current_customer %>
+
+<% else %>
+<%= render 'logon' %>
+<% end %>

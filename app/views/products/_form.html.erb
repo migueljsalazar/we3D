@@ -16,11 +16,15 @@
 
 
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :name%>
     <%= f.text_field :name %>
   </div>
+   <div class="field">
+    <%= f.label :color, 'Color?' %>
+    <%= f.check_box :color %>
+  </div>
   <div class="field">
-    <%= f.label :object %>
+    <%= f.label :object, '3D File' %>
     <%= f.file_field :object %>
   </div>
   <div class="field">

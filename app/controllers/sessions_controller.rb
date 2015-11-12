@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   def new
+    if current_designer || current_supplier || current_customer
+      redirect_to root_path
   end
 
   def create
