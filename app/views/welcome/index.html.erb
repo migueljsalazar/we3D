@@ -1,5 +1,3 @@
-
-
 <h1>Welcome to we3D</h1>
 
 <%= @campaigns.each do |campaign| %>
@@ -10,9 +8,12 @@
   <%= campaign.price %><br>
   <%= link_to 'Show', campaign %><br>
 <% end %>
+<% end %>
 
-<% if current_designer || current_supplier || current_customer %>
-
+<% if current_designer || current_supplier %>
 <% else %>
-<%= render 'logon' %>
+  <div>
+  <h3>Log On</h3>
+  <%= render 'sessions/form' %>
+  </div>
 <% end %>

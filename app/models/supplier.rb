@@ -27,8 +27,6 @@ class Supplier < ActiveRecord::Base
       errors.add(:username, "in use")
     elsif Supplier.where("lower(username) = ?", self.username.downcase).first
       errors.add(:username, "in use")
-    elsif Customer.where("lower(username) = ?", self.username.downcase).first
-    errors.add(:username, "in use")
     end
   end
 

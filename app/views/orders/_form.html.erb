@@ -1,3 +1,5 @@
+
+
 <div class="wrapper-inside">
 <%= form_for @order, html: { class: "basic-grey" } do |f| %>
   <% if @order.errors.any? %>
@@ -15,7 +17,11 @@
       </ul>
     </div>
   <% end %>
-  <p id="notice"><%= notice %></p>
+  <div class="container">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+  </div>
   <div class="field">
     <%= f.hidden_field :campaign_id, value: @campaign.id %>
   </div>

@@ -15,14 +15,8 @@ class ApplicationController < ActionController::Base
     @current_supplier ||= Supplier.find_by(id: session[:supplier_id])
   end
 
-  def current_customer
-    @current_customer ||= Customer.find_by(id: session[:customer_id])
-  end
-
   def require_logged_in
-    return true if current_designer || current_supplier || current_customer
-
-    format.html {notice: 'You need to Log In before you can order!' }
+    return true if current_designer || current_supplier
     return false
   end
 
