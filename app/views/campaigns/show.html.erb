@@ -27,7 +27,7 @@
         </canvas>
         <script type="text/javascript">
             var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-            viewer.setParameter('SceneUrl',         '<%= @product.product_image.url.gsub(/\?.*/, '') %>');
+            viewer.setParameter('SceneUrl',         '<%= @product.object.url.gsub(/\?.*/, '') %>');
             viewer.setParameter('ModelColor',       '#0065ca');
             viewer.setParameter('BackgroundColor1', '#f2f2f2');
             viewer.setParameter('RenderMode',       'texturesmooth');
