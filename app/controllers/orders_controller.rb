@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @order.campaign = @campaign
+    @campaign = @order.campaign
   end
 
   def create
