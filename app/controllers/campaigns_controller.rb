@@ -8,6 +8,7 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find(params[:id])
     @order = Order.new
+    @product = Product.find(params[:id])
   end
 
   def new
