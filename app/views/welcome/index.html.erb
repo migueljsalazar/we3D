@@ -2,3 +2,12 @@
 
 <h3>Log On</h3>
 <%= render 'sessions/form' %>
+<%= @campaigns.each do |campaign| %>
+<%= content_tag_for(:div, campaign) do %>
+  <%= campaign.title %><br>
+  <%= campaign.description %><br>
+  <%= campaign.length %><br>
+  <%= campaign.price %><br>
+  <%= link_to 'Show', campaign %><br>
+<% end %>
+<% end %>

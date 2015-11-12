@@ -1,28 +1,3 @@
-<p id="notice"><%= notice %></p>
-<div>
-<p>
-  <strong>Title:</strong>
-  <%= @campaign.title %>
-</p>
-
-<p>
-  <strong>Description</strong>
-  <%= @campaign.description %>
-</p>
-
-<p>
-  <strong>Length</strong>
-  <%= @campaign.length %>
-</p>
-
-<p>
-  <strong>Price</strong>
-  <%= @campaign.price %>
-</p>
-</div>
-<% cache(@product) do %>
-<%= render partial: '3dimage' %>
-<% end %>
 <div>
 <p>
   <strong>3d object</strong>
@@ -42,12 +17,5 @@
             viewer.init();
             viewer.update();
         </script>
-</p>
-</div>
-<div>
-<p>
-<% cache do %>
-<%= render 'orders/form' %>
-<% end %>
 </p>
 </div>
