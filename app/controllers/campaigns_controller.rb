@@ -8,7 +8,7 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find(params[:id])
     @order = Order.new
-    @product = Product.find(params[:id])
+    @product = @campaign.product
   end
 
   def new
@@ -55,7 +55,7 @@ class CampaignsController < ApplicationController
   private
 
   def set_campaign
-      @campaign = current_designer.products.campaigns.find(params[:id])
+    @campaign = current_designer.products.campaigns.find(params[:id])
   end
 
   def campaign_params
