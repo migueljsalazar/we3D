@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  resources :charges
   resource :sessions
-  resources :designers
-  resources :suppliers
+  resource :designers
+  resource :suppliers
+  resource :customers
   resources :products
-  resources :campaigns
-  resources :orders
-
+  resources :campaigns do
+    resources :orders
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
