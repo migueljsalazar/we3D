@@ -1,5 +1,5 @@
 class Campaign < ActiveRecord::Base
-  belongs_to :product, dependent: :destroy
+  belongs_to :product
   belongs_to :designer
   belongs_to :supplier
   has_many :orders
@@ -10,8 +10,5 @@ class Campaign < ActiveRecord::Base
   scope :backed, -> {where(status: "backed")}
   scope :off, -> {where(status: "off")}
 
- def to_s
-    "#{self.title.downcase}"
-  end
 end
 

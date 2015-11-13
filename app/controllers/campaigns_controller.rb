@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
  before_action :require_logged_in, only: [:new, :edit, :update, :destroy]
- before_action :set_campaign, only [:show, :edit, :update, :destroy]
+ before_action :set_campaign, only: [:edit, :update, :destroy]
 
   def index
     @campaigns = Campaign.all
@@ -13,10 +13,11 @@ class CampaignsController < ApplicationController
   end
 
   def new
-     @campaign = current_designer.campaigns.new
+     @campaign = current_designer.campaigns.new(:product_id => params[:product_id])
   end
 
   def edit
+    @product = @campaign.product
   end
 
   def create
@@ -47,6 +48,7 @@ class CampaignsController < ApplicationController
 
   def destroy
     @campaign.destroy
+
     respond_to do |format|
       format.html { redirect_to campaigns_url, notice: 'Campaign was successfully destroyed.' }
       format.json { head :no_content }

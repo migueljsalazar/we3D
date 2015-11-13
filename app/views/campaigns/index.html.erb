@@ -18,7 +18,7 @@
         <td><%= campaign.length %></td>
         <td><%= campaign.price %></td>
         <td><%= link_to 'Show', campaign %></td>
-        <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
+        <td><%= link_to 'Edit', edit_campaign_path(campaign)(product_id: @product.id) %></td>
         <td><%= link_to 'Destroy', campaign, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
