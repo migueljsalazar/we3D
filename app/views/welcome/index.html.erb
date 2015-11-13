@@ -1,26 +1,40 @@
 <h1>Welcome to we3D</h1>
 
+<div id='thumbnails'>
 <%= @campaigns.each do |campaign| %>
-<%= content_tag_for(:div, campaign) do %>
-  <%= campaign.title %><br>
-  <%= campaign.description %><br>
-  <%= campaign.length %><br>
-  <%= link_to 'Show', campaign %><br>
-<% end %>
- <canvas id="cv" width=350 height=263>
+
+  <%= content_tag_for(:div, campaign) do %>
+    <%= campaign.title %><br>
+    <%= campaign.description %><br>
+    <%= campaign.length %><br>
+    <%= link_to 'Show', campaign %><br>
+  <% end %>
+
+  <canvas class="cv" width=350 height=263>
   It seems you are using an outdated browser that does not support canvas :-(
   </canvas>
+
   <script type="text/javascript">
-      var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-      viewer.setParameter('SceneUrl',         '<%= campaign.product.object.url.gsub(/\?.*/, '') %>');
-      viewer.setParameter('ModelColor',       '#0065ca');
-      viewer.setParameter('BackgroundColor1', '#f2f2f2');
-      viewer.setParameter('RenderMode',       'texturesmooth');
-      viewer.setParameter('CreaseAngle', '20');
-      viewer.setParameter('Renderer', 'webgl');
-      viewer.setParameter('Definition', 'high');
-      viewer.setParameter('Background', 'off')
-      viewer.init();
-      viewer.update();
+  var a = '<%= Campaign.count %>'
+  for (var i=0; i < a ; ++i) {
+    var boxWidth = 350;
+    var boxHeight = 263;
+    $('#thumbnails').append($( 'canvas' ).prop({width: boxWidth, height: boxHeight}).addClass( "cv" );
+    );
+  }
+
+  var viewer = new JSC3D.Viewer(document.getElementByClassName('cv'));
+  viewer.setParameter('SceneUrl',         '<%= campaign.product.object.url.gsub(/\?.*/, '') %>');
+  viewer.setParameter('ModelColor',       '#0065ca');
+  viewer.setParameter('BackgroundColor1', '#f2f2f2');
+  viewer.setParameter('RenderMode',       'texturesmooth');
+  viewer.setParameter('CreaseAngle', '20');
+  viewer.setParameter('Renderer', 'webgl');
+  viewer.setParameter('Definition', 'high');
+  viewer.setParameter('Background', 'off')
+  viewer.init();
+  viewer.update();
   </script>
+
 <% end %>
+</div>
