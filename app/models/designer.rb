@@ -1,6 +1,6 @@
 class Designer < ActiveRecord::Base
   has_secure_password
-  has_many :products
+  has_many :products, dependent: :destroy
   has_many :campaigns, through: :products
 
   validates :username, :presence => true, :length => { :in => 3..20 }
