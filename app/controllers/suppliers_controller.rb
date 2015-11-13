@@ -2,7 +2,11 @@ class SuppliersController < ApplicationController
  before_action :set_designer, only: [:show, :edit, :update, :destroy]
 
   def new
+    if current_supplier
+      redirect_to root_path
+    else
     @supplier = Supplier.new
+  end
   end
 
   def create

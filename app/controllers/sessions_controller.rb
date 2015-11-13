@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    if current_designer || current_supplier || current_customer
+    if current_designer || current_supplier
       redirect_to root_path
     end
   end
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
     if @designer
       session[:designer_id] = @designer.id
-      redirect_to new_product_path
+      redirect_to designer_dashboard_index_path
 
     elsif @supplier
       session[:supplier_id] = @supplier.id

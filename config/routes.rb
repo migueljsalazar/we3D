@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resource :designers
   resource :suppliers
   resource :customers
+  resources :designer_dashboard
 
   #CRUD Products routes
   resources :products
