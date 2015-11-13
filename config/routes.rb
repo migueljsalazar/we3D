@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   #signup - user interface routes
   resource :designers
-  resource :designer_dashboard
+  resources :designer_dashboard
   resource :suppliers
+  resources :supplier_dashboard
 
   #CRUD Products routes
   resources :products

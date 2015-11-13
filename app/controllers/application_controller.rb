@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_designer
   helper_method :current_supplier
-  helper_method :current_customer
 
   def current_designer
     @current_designer ||= Designer.find_by(id: session[:designer_id])
