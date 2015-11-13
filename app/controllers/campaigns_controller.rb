@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
  before_action :require_logged_in, only: [:new, :edit, :update, :destroy]
+ before_action :set_campaign, only [:show, :edit, :update, :destroy]
 
   def index
     @campaigns = Campaign.all
@@ -55,7 +56,7 @@ class CampaignsController < ApplicationController
   private
 
   def set_campaign
-    @campaign = current_designer.products.campaigns.find(params[:id])
+    @campaign = current_designer.campaigns.find(params[:id])
   end
 
   def campaign_params

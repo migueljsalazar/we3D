@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  belongs_to :campaigns
+  belongs_to :campaign
   belongs_to :supplier
 
   def process_payment
