@@ -1,14 +1,17 @@
 class Campaign < ActiveRecord::Base
-belongs_to :product
-belongs_to :designer
-belongs_to :supplier
-has_many :orders
+  belongs_to :product, dependent: :destroy
+  belongs_to :designer
+  belongs_to :supplier
+  has_many :orders
 
-# scope :start, -> {where(start: true)}
-scope :available, -> {where(available: true)}
-scope :on, -> {where(status: "on")}
-scope :backed, -> {where(status: "backed")}
-scope :off, -> {where(status: "off")}
+  # scope :start, -> {where(start: true)}
+  scope :available, -> {where(available: true)}
+  scope :on, -> {where(status: "on")}
+  scope :backed, -> {where(status: "backed")}
+  scope :off, -> {where(status: "off")}
 
+ def to_s
+    "#{self.title.downcase}"
+  end
 end
 
