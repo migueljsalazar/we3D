@@ -10,7 +10,7 @@
     <%= link_to 'Show', campaign %><br>
   <% end %>
 
-  <canvas class="cv" width=350 height=263>
+  <canvas id="cv" width=350 height=263>
   It seems you are using an outdated browser that does not support canvas :-(
   </canvas>
 
@@ -19,11 +19,10 @@
   for (var i=0; i < a ; ++i) {
     var boxWidth = 350;
     var boxHeight = 263;
-    $('#thumbnails').append($( 'canvas' ).prop({width: boxWidth, height: boxHeight}).addClass( "cv" );
-    );
+    $('#thumbnails').append($( 'canvas' ).prop({width: boxWidth, height: boxHeight, id: 'cv'}));
   }
 
-  var viewer = new JSC3D.Viewer(document.getElementByClassName('cv'));
+  var viewer = new JSC3D.Viewer(document.getElementById('cv'));
   viewer.setParameter('SceneUrl',         '<%= campaign.product.object.url.gsub(/\?.*/, '') %>');
   viewer.setParameter('ModelColor',       '#0065ca');
   viewer.setParameter('BackgroundColor1', '#f2f2f2');
