@@ -35,8 +35,19 @@ class CampaignsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @campaign.update(campaign_params)
+    if current_designer
+      respond_to do |format|
+        if @campaign.update(campaign_params)
+          format.html { redirect_to @campaign, notice: 'Campaign was successfully updated.' }
+          format.json { render :show, status: :ok, location: @campaign }
+        else
+          format.html { render :edit }
+          format.json { render json: @campaign.errors, status: :unprocessable_entity }
+        end
+      end
+    elsif current_supplier
+     respond_to do |format|
+      if @campaign.update(supplier_campaign_params)
         format.html { redirect_to @campaign, notice: 'Campaign was successfully updated.' }
         format.json { render :show, status: :ok, location: @campaign }
       else
@@ -45,6 +56,7 @@ class CampaignsController < ApplicationController
       end
     end
   end
+end
 
   def destroy
     @campaign.destroy
@@ -58,7 +70,16 @@ class CampaignsController < ApplicationController
   private
 
   def set_campaign
+    if current_designer
     @campaign = current_designer.campaigns.find(params[:id])
+  elsif current_supplier
+    @campaign = Campaign.find(params[:id])
+  end
+
+  end
+
+    def supplier_campaign_params
+    params.require(:campaign).permit(:available, :supplier_id)
   end
 
   def campaign_params

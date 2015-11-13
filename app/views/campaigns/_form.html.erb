@@ -1,3 +1,4 @@
+<% if current_designer %>
 <%= form_for(@campaign) do |f| %>
   <div class="field">
     <%= f.label :title %>
@@ -16,8 +17,19 @@
     <%= f.number_field :price %>
   </div>
   <%= f.hidden_field :product_id %>
+  <% end %>
+
+  <% elsif current_supplier %>
+  <%= form_for(@campaign) do |f| %>
+   <div class="field">
+    <%= f.label :available %>
+    <%= f.check_box :available %>
+  </div>
+
+
 
   <p>
 <%= f.submit %>
 </p>
+ <% end %>
 <% end %>

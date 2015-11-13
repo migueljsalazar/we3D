@@ -32,7 +32,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:designer_id] = nil
     session[:supplier_id] = nil
-    session[:customer_id] = nil
     redirect_to root_path
   end
 
