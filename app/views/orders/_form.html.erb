@@ -1,7 +1,5 @@
-
-
 <div class="wrapper-inside">
-<%= form_for @order, html: { class: "basic-grey" } do |f| %>
+<%= form_for [@campaign, @order], html: { class: "basic-grey" } do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -17,11 +15,6 @@
       </ul>
     </div>
   <% end %>
-  <div class="container">
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
-  </div>
   <div class="field">
     <%= f.hidden_field :campaign_id, value: @campaign.id %>
   </div>
@@ -48,15 +41,36 @@
     <%= f.label :qty %>
     <%= f.number_field :zip_code %>
   </div>
-  <div class="actions">
-    <script
-      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
-      data-image="/img/documentation/checkout/marketplace.png"
-      data-name="Business Name"
-      data-description="<%= @campaign.title %>"
-      data-amount="<%= @campaign.price*100 %>">
-    </script>
-  </div>
+  <p>
+    <%= f.submit "Purchase" , id: "customButton" %>
+  </p>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script>
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+    image: '/img/documentation/checkout/marketplace.png',
+    locale: 'auto',
+    token: function(token) {
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+    }
+  });
+
+  $('#customButton').on('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'we3d',
+      description: "<%= @campaign.title %>",
+      amount: "<%= @campaign.price*100 %>"
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });
+</script>
 <% end %>
 </div>
+

@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   #signup - user interface routes
   resource :designers
   resource :suppliers
-  resource :customers
 
   #CRUD Products routes
   resources :products

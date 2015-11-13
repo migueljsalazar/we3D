@@ -1,19 +1,18 @@
  <canvas id="cv" width=640 height=480>
-        It seems you are using an outdated browser that does not support canvas :-(
-        </canvas>
-        <script type="text/javascript">
-            var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-            viewer.setParameter('SceneUrl',         '<%= @product.object.url.gsub(/\?.*/, '') %>');
-            viewer.setParameter('ModelColor',       '#0065ca');
-            viewer.setParameter('BackgroundColor1', '#f2f2f2');
-            viewer.setParameter('RenderMode',       'texturesmooth');
-            viewer.setParameter('CreaseAngle', '20');
-            viewer.setParameter('Renderer', 'webgl');
-            viewer.setParameter('Definition', 'high');
-            viewer.setParameter('Background', 'off')
-            viewer.init();
-            viewer.update();
-        </script>
-
+    It seems you are using an outdated browser that does not support canvas :-(
+    </canvas>
+    <script type="text/javascript">
+        var viewer = new JSC3D.Viewer(document.getElementById('cv'));
+        viewer.setParameter('SceneUrl',         '<%= @product.object.url.gsub(/\?.*/, '') %>');
+        viewer.setParameter('ModelColor',       '#0065ca');
+        viewer.setParameter('BackgroundColor1', '#f2f2f2');
+        viewer.setParameter('RenderMode',       'texturesmooth');
+        viewer.setParameter('CreaseAngle', '20');
+        viewer.setParameter('Renderer', 'webgl');
+        viewer.setParameter('Definition', 'high');
+        viewer.setParameter('Background', 'off')
+        viewer.init();
+        viewer.update();
+    </script>
 <br><br>
 <%= link_to 'Create Campaign', new_campaign_path(product_id: @product.id) %>

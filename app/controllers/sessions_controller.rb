@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    if current_designer || current_supplier || current_customer
+    if current_designer || current_supplier
       redirect_to root_path
     end
   end
