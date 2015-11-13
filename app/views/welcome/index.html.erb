@@ -1,13 +1,15 @@
 <h1>Welcome to we3D</h1>
+<%= link_to 'Launch A Campaign', new_product_path %>
 <%= counter = 0 %>
-<h2>Featured Campaigns</h2>
+<h2 id="FC">Featured Campaigns</h2>
   <table>
     <thead>
       <tr>
       <th>Title</th>
       <th>Description</th>
       <th>Expiration</th>
-      <th colspan="3"</th>
+      <th>Link</th>
+      <th colspan="4"</th>
       </tr>
     </thead>
 
@@ -17,16 +19,13 @@
     <tr>
       <td><%= campaign.title %>
       <td><%= campaign.description %>
-      <td><%= campaign.length %>
+      <td><%= campaign.length.to_formatted_s(:long)%>
       <td><%= link_to 'Show', campaign %>
     </tr>
   </tbody>
 </table>
-
-  <p id='trial'></p>
   <script type="text/javascript">
   var a = <%= counter %>;
-  console.log(a);
   var newCanvas = $('<canvas/>',{
                      'class':'radHuh',
                       id: ('cv'+ a)
@@ -34,7 +33,7 @@
                       width: 350,
                       height: 263
                   });
-  $('#trial').append(newCanvas);
+  $('table').append(newCanvas);
   var viewer = new JSC3D.Viewer(document.getElementById('cv' + a));
   viewer.setParameter('SceneUrl',         '<%= campaign.product.object.url.gsub(/\?.*/, '') %>');
   viewer.setParameter('ModelColor',       '#0065ca');
