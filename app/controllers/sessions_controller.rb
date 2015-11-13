@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
     elsif @supplier
       session[:supplier_id] = @supplier.id
-      redirect_to :back
+      redirect_to supplier_dashboard_index_path
 
     else
       flash[:notice] = "Form is invalid"
@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
     session[:designer_id] = nil
     session[:supplier_id] = nil
     session[:customer_id] = nil
-    redirect_to :back
+    redirect_to root_path
   end
 
 end

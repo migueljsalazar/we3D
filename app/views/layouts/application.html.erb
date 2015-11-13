@@ -25,8 +25,11 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="<%= root_path %>">Home</a></li>
-        <li><a href="#">link 1</a></li>
-        <li><a href="#">link 2</a></li>
+        <% if current_designer %>
+        <li><a href="/designer_dashboard">Dashboard</a></li>
+        <% elsif current_supplier %>
+        <li><a href="/supplier_dashboard">Dashboard</a></li>
+        <% end %>
         <li><a href="#">link 3</a></li>
         <li><a href="#">link 4</a></li>
       </ul>
