@@ -15,6 +15,10 @@ class ProductsController < ApplicationController
      @product = current_designer.products.new
   end
 
+  def edit
+    @product = current_designer.products.find(params[:id])
+  end
+
   def create
     @product = current_designer.products.new(product_params)
 
