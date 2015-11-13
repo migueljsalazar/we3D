@@ -2,7 +2,11 @@ class DesignersController < ApplicationController
   before_action :set_designer, only: [:show, :edit, :update, :destroy]
 
   def new
+    if current_designer
+      redirect_to root_path
+    else
     @designer = Designer.new
+  end
   end
 
   def create
