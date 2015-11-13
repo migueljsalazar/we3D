@@ -6,6 +6,7 @@
       <th>Description</th>
       <th>Length</th>
       <th>Price</th>
+      <th>Available</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
         <td><%= campaign.description %></td>
         <td><%= campaign.length %></td>
         <td><%= campaign.price %></td>
+        <td><%= campaign.available %></td>
         <td><%= link_to 'Show', campaign %></td>
         <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
         <td><%= link_to 'Destroy', campaign, method: :delete, data: { confirm: 'Are you sure?' } %></td>
