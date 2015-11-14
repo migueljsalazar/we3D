@@ -39,6 +39,7 @@
     </script>
 </p>
 </div>
+
 <div>
 <p>
 <%# cache do %>
@@ -46,3 +47,13 @@
 <%# end %>
 </p>
 </div>
+
+<% if current_supplier %>
+   <%= form_for(@campaign) do |f| %>
+   <%= f.hidden_field :supplier_id, value: current_supplier.id %>
+    <p>
+      <%= f.submit "Become Supplier", data: { confirm: "Are you sure you would like to be this campaign's supplier?" } %>
+    </p>
+  <% end %>
+<% else %>
+<% end %>
