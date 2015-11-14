@@ -48,7 +48,7 @@
 </p>
 </div>
 
-<% if current_supplier %>
+<% if current_supplier && @campaign.available? %>
    <%= form_for(@campaign) do |f| %>
    <%= f.hidden_field :supplier_id, value: current_supplier.id %>
     <p>

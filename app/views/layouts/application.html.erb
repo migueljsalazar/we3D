@@ -31,8 +31,11 @@
         <% elsif current_supplier %>
         <li><a href="/supplier_dashboard">Dashboard</a></li>
         <% end %>
-        <li><a href="#">link 3</a></li>
-        <li><a href="#">link 4</a></li>
+        <% if current_designer || current_supplier %>
+        <% else %>
+        <li><a href="/designers/new">Become a Designer</a></li>
+        <li><a href="/suppliers/new">Become a Supplier</a></li>
+         <% end %>
       </ul>
        <ul class="nav navbar-nav navbar-right">
         <% if current_designer || current_supplier %>
