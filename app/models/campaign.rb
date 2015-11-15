@@ -29,7 +29,7 @@ class Campaign < ActiveRecord::Base
 
 
   def profiteq
-    profit = ((price - self.product.base_cost) * goal).to_f / 100
+    profit = ((price - self.product.basecosteq) * goal).to_f / 100
     format("%.2f", profit)
   end
 
