@@ -8,4 +8,13 @@ class Product < ActiveRecord::Base
     "#{self.name.downcase}"
   end
 
+  def basecosteq
+    @basecost = (((x.to_f / 10) * (y.to_f / 10) * (z.to_f / 10 ))* 10)* 1.5
+  end
+
+  def formatted_base_cost
+    price_in_dollars = basecosteq.to_f / 100
+    format("%.2f", price_in_dollars)
+  end
+
 end

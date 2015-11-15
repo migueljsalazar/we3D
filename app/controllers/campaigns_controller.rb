@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
  before_action :require_logged_in, only: [:new, :edit, :update, :destroy]
  before_action :set_campaign, only: [:edit, :update, :destroy]
-
+ # before_action :set_available_campaign, only: [:index]
   def index
     @campaigns = Campaign.all
   end
@@ -10,6 +10,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @order = @campaign.orders.new
     @product = @campaign.product
+    @campaigns = Campaign.all
   end
 
   def new
@@ -17,8 +18,12 @@ class CampaignsController < ApplicationController
   end
 
   def edit
+    if current_designer
     @product = @campaign.product
+  else
+    redirect_to root_path
   end
+end
 
   def create
     @campaign = current_designer.campaigns.new(campaign_params)
@@ -36,18 +41,14 @@ class CampaignsController < ApplicationController
 
   def update
     if current_designer
-      respond_to do |format|
-        if @campaign.update(campaign_params)
-          format.html { redirect_to @campaign, notice: 'Campaign was successfully updated.' }
-          format.json { render :show, status: :ok, location: @campaign }
-        else
-          format.html { render :edit }
-          format.json { render json: @campaign.errors, status: :unprocessable_entity }
-        end
-      end
+      my_params = campaign_params
     elsif current_supplier
-     respond_to do |format|
-      if @campaign.update(supplier_campaign_params)
+      @campaign.supplier = current_supplier
+      my_params = supplier_campaign_params
+    end
+
+    respond_to do |format|
+      if @campaign.update(my_params)
         format.html { redirect_to @campaign, notice: 'Campaign was successfully updated.' }
         format.json { render :show, status: :ok, location: @campaign }
       else
@@ -56,7 +57,7 @@ class CampaignsController < ApplicationController
       end
     end
   end
-end
+
 
   def destroy
     @campaign.destroy
@@ -71,15 +72,18 @@ end
 
   def set_campaign
     if current_designer
-    @campaign = current_designer.campaigns.find(params[:id])
-  elsif current_supplier
-    @campaign = Campaign.find(params[:id])
+      @campaign = current_designer.campaigns.find(params[:id])
+    elsif current_supplier
+      @campaign = Campaign.find(params[:id])
+    end
   end
 
-  end
+  # def set_available_campaign
+  #   @campaign = Campaign.unavailable.find(params[:id])
+  # end
 
     def supplier_campaign_params
-    params.require(:campaign).permit(:available, :supplier_id)
+    params.require(:campaign).permit(:supplier_id)
   end
 
   def campaign_params
