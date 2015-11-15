@@ -10,9 +10,10 @@
         viewer.setParameter('CreaseAngle', '20');
         viewer.setParameter('Renderer', 'webgl');
         viewer.setParameter('Definition', 'high');
-        viewer.setParameter('Background', 'off')
+        viewer.setParameter('Background', 'off');
         viewer.init();
         viewer.update();
     </script>
+    <%= number_to_currency @product.basecosteq %>
 <br><br>
 <%= link_to 'Create Campaign', new_campaign_path(product_id: @product.id) %>

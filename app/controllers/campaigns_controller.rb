@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
  before_action :require_logged_in, only: [:new, :edit, :update, :destroy]
  before_action :set_campaign, only: [:edit, :update, :destroy]
- before_action :set_available_campaign, only: [:index]
+ # before_action :set_available_campaign, only: [:index]
   def index
     @campaigns = Campaign.all
   end
@@ -78,9 +78,9 @@ end
     end
   end
 
-  def set_available_campaign
-    @campaign = Campaign.available.find(params[:id])
-  end
+  # def set_available_campaign
+  #   @campaign = Campaign.unavailable.find(params[:id])
+  # end
 
     def supplier_campaign_params
     params.require(:campaign).permit(:supplier_id)
