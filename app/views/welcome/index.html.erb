@@ -12,7 +12,7 @@
     </thead>
 
     <tbody>
-      <%= @campaigns.unavailable.each do |campaign| %>
+      <%= @campaigns.unavailable.on.each do |campaign| %>
       <% counter += 1 %>
     <tr>
       <td><%= campaign.title %>

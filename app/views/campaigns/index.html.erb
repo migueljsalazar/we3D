@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% @campaigns.unavailable.each do |campaign| %>
+    <% @campaigns.unavailable.on.each do |campaign| %>
       <tr>
         <td><%= campaign.title %></td>
         <td><%= campaign.description %></td>
