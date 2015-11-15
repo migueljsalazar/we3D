@@ -10,11 +10,17 @@ class Campaign < ActiveRecord::Base
 
   scope :on, -> {where(status: "on")}
   scope :backed, -> {where(status: "backed")}
-  scope :off, -> {where(status: "off")}
+  scope :off, -> {where("length >= ?", Date.today)}
+
+  # scope :campaign_off, -> { where(length: < Date.now) }
 
   def available?
     self.supplier.nil?
   end
+
+  # def campaign_off
+  #   self.length >= Date.time?
+  # end
 
 end
 
