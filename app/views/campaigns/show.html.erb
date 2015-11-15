@@ -49,6 +49,7 @@
 </p>
 </div>
 
+<% if @campaign.campaign_off %>
 <div>
 <p>
 <%# cache do %>
@@ -56,6 +57,8 @@
 <%# end %>
 </p>
 </div>
+<% else %>
+<% end %>
 
 <% if current_supplier && @campaign.available? %>
    <%= form_for(@campaign) do |f| %>
