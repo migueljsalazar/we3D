@@ -22,5 +22,16 @@ class Campaign < ActiveRecord::Base
     self.length >= Date.today
   end
 
+   def formatted_price
+    price_in_dollars = price.to_f / 100
+    format("%.2f", price_in_dollars)
+  end
+
+
+  def profiteq
+    profit = ((price - self.product.base_cost) * goal).to_f / 100
+    format("%.2f", profit)
+  end
+
 end
 

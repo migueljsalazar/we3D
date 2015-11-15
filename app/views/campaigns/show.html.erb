@@ -17,7 +17,7 @@
 
 <p>
   <strong>Price</strong>
-  <%= @campaign.price %>
+  <%= @campaign.formatted_price %>
 </p>
 <p>
   <strong>Status</strong>
@@ -25,8 +25,14 @@
 </p>
 <p>
   <strong>base cost</strong>
-  <%= @product.basecosteq %>
+  <%= @product.formatted_base_cost %>
 </p>
+
+<p>
+  <strong> profit</strong>
+  <%= @campaign.profiteq %>
+</p>
+
 
 <p>
   <strong>3d object</strong>
