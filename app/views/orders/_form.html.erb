@@ -47,19 +47,23 @@
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script>
   var handler = StripeCheckout.configure({
-    key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+    key: '<%= Rails.configuration.stripe[:publishable_key] %>',
     image: '/img/documentation/checkout/marketplace.png',
     locale: 'auto',
+    shippingAddress: 'true',
     token: function(token) {
       // Use the token to create the charge with a server-side script.
       // You can access the token ID with `token.id`
+      token.id
+      token.email
+      args // Has billing and shipping
     }
   });
 
   $('#customButton').on('click', function(e) {
     // Open Checkout with further options
     handler.open({
-      name: 'we3d',
+      name: 'YouMe3D',
       description: "<%= @campaign.title %>",
       amount: "<%= @campaign.price*100 %>"
     });

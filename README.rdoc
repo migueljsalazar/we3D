@@ -1,28 +1,25 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+---UNRELEASED & IN DEVELOPMENT---
 
-Things you may want to cover:
+YouMe3D is a platform where users upload 3D designs to-be-sold; create crowd-funding campaigns to market them; and if the campaign is profitable, recieve profit from YouMe3D in return.
 
-* Ruby version
+To begin, designers sign up and log in.
+Designers upload their 3D designs to YouMe3D which renders the object, and provides a base cost for manufacturing each @ 50 units. Designers can select whether they would like their product in color or not ($.68 vs. $2.00 base cost), what the "x, y, z" dimensions are, and the product name. They can then launch a campaign from the product page. The campaign also has the associatd 3D rendering. Designers can create the campaign with a given title, description, image upload, sales goal, and price. The campaign will be hosted on YouMe3D for however long the designer selects: [3, 7, 11, 21, 31 days]. The designer sets a price that is higher or at least equal to the base cost per product. The designer then chooses a sales goal that generates an estimated total profit for the campaign, given the goal being met. The actual total profit from each campaign is calculated from the difference between the product's price and its base cost, multipled by the amount of orders. Campaign orders are fufilled, manufacutred and shipped, once it is offically over.
 
-* System dependencies
+As soon as it is profitable, a campaign's design will continue to get manufactured and shipped out to buyers for the length of its life. The campaigns are re-launchable. If a campaign is profitable, but does not reach its sales goal, orders are still fufilled. The sales goal is only for estimate purposes and has no material consequence. If a campaign never becomes profitable for its life, it is turned off and no orders are fufilled (e.g. any buyers who reserved aren't charged). Such a campaign is editable and relaunchable. Campaign histories, product inventory, and profit/revenue streams are available on an individual designer dashboard.
 
-* Configuration
+Designer dashboard display total profit from campaigns, total active campaigns, and a list of campaigns by status, amount of orders, and date. Designers can select and update individual campaigns, as well as peer into past campaigns from here. The dashboard sidebar also contains page option for profile setting updates and messaging to their campaigns buyers (as a collective and w/o view of their emails).
 
-* Database creation
+To begin as a supplier, sign up and log in.
+Suppliers are redirected to their dashboard, where they can view their current orders sorted by campaign, amount, and/or date. An overview displays total number of orders and total amount of revenue. On the dashboard sidebar, supplier can select an option to explore campaigns available to suppliers. Suppliers bid on potential campaigns and their orders by offering the lowest base cost for manufacturing and shipping per product. The supplier with the lowest offer becomes associated with that campaign, and it is no longer viewable under the exploration tab. The dashboard sidebar also has an option to message designers via YouMe3D. Lastly, there is an option for suppliers to update their company profile settings.
 
-* Database initialization
+To begain as a buyer, start from the homepage.
+The homepage contains 2 main calls to action. "Launch a campiagn" and "Explore campaings". The former is for potential designers, the later for buyers. Buyers explore campaigns through an index of all active ones. They click on a campaign to view more information on the campaign. If they want to "back" the campaign, and it is live, they can click on a purchase button that will pop up a stripe checkout API. After entering his or her shipping and billing info, the order flashes a success or error page on the show campaign, which the buyer returns too.  The buyer will recieve a confimration email, confirming the order.
 
-* How to run the test suite
+YouMe3D holds the stripe tokens until the campaign is done in an Order table. If it is profitable, the orders will be charged and money sent to suppliers for the orders to be fufilled. After this the order tally for suppliers and designers in their dashboard view for that specific campaign is updated. Suppliers will notify YouMe3D upon order shipment, which will trigger an email messsage to buyers notifying them as well.
 
-* Services (job queues, cache servers, search engines, etc.)
+Designers will pe periodically updated via email about their order fufillments and when it is done.
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Mission:
+YouMe3D the cost to enter market is solely the viability of the creator's design. allows creators and their designs into enter into market 

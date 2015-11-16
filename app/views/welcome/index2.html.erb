@@ -1,0 +1,50 @@
+index2.html.erba<h1>Welcome to we3D</h1>
+<%= link_to 'Launch A Campaign', new_product_path %>
+<%= counter = 0 %>
+<h2 id="FC">Featured Campaigns</h2>
+  <table>
+    <thead>
+      <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Expiration</th>
+      <th>Link</th>
+      <th colspan="4"</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @campaigns.unavailable.on.each do |campaign| %>
+      <% counter += 1 %>
+    <tr>
+      <td><%= campaign.title %>
+      <td><%= campaign.description %>
+      <td><%= campaign.length.to_formatted_s(:long)%>
+      <td><%= link_to 'Show', campaign %>
+    </tr>
+  </tbody>
+</table>
+  <script type="text/javascript">
+  var a = <%= counter %>;
+  var newCanvas = $('<canvas/>',{
+                     'class':'radHuh',
+                      id: ('cv'+ a)
+                  }).prop({
+                      width: 350,
+                      height: 263
+                  });
+  $('table').append(newCanvas);
+  var viewer = new JSC3D.Viewer(document.getElementById('cv' + a));
+  viewer.setParameter('SceneUrl',         '<%= campaign.product.object.url.gsub(/\?.*/, '') %>');
+  viewer.setParameter('ModelColor',       '#0065ca');
+  viewer.setParameter('BackgroundColor1', '#f2f2f2');
+  viewer.setParameter('RenderMode',       'texturesmooth');
+  viewer.setParameter('CreaseAngle', '20');
+  viewer.setParameter('Renderer', 'webgl');
+  viewer.setParameter('Definition', 'high');
+  viewer.setParameter('Background', 'off')
+  viewer.init();
+  viewer.update();
+  </script>
+
+<% end %>

@@ -8,12 +8,14 @@ class Product < ActiveRecord::Base
     "#{self.name.downcase}"
   end
 
+  # w/o color $.68 per cm^3
+  # w/ color $2.00 per cm^3
   def basecosteq
-    @basecost = (((x.to_f / 10) * (y.to_f / 10) * (z.to_f / 10 ))* 10)* 1.5
+    @basecost = ((x.to_f/10) * (y.to_f/10) * (z.to_f/10)) * 0.68
   end
 
   def formatted_base_cost
-    price_in_dollars = basecosteq.to_f / 100
+    price_in_dollars = basecosteq
     format("%.2f", price_in_dollars)
   end
 
