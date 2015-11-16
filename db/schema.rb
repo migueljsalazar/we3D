@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151114204058) do
+ActiveRecord::Schema.define(version: 20151116230356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 20151114204058) do
   add_index "campaigns", ["product_id"], name: "index_campaigns_on_product_id", using: :btree
   add_index "campaigns", ["supplier_id"], name: "index_campaigns_on_supplier_id", using: :btree
 
+  create_table "customers", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "email"
+  end
+
+  add_index "customers", ["username"], name: "index_customers_on_username", unique: true, using: :btree
+
   create_table "designers", force: :cascade do |t|
     t.string   "email"
     t.integer  "profit"
@@ -54,11 +64,13 @@ ActiveRecord::Schema.define(version: 20151114204058) do
     t.datetime "updated_at",  null: false
     t.string   "card_token"
     t.integer  "campaign_id"
+    t.integer  "customer_id"
     t.string   "full_name"
     t.string   "email"
   end
 
   add_index "orders", ["campaign_id"], name: "index_orders_on_campaign_id", using: :btree
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.decimal  "x"
@@ -75,6 +87,10 @@ ActiveRecord::Schema.define(version: 20151114204058) do
     t.string   "object_content_type"
     t.integer  "object_file_size"
     t.datetime "object_updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "products", ["designer_id"], name: "index_products_on_designer_id", using: :btree
@@ -97,5 +113,6 @@ ActiveRecord::Schema.define(version: 20151114204058) do
   add_foreign_key "campaigns", "products"
   add_foreign_key "campaigns", "suppliers"
   add_foreign_key "orders", "campaigns"
+  add_foreign_key "orders", "customers"
   add_foreign_key "products", "designers"
 end

@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   belongs_to :designer
   has_attached_file :object
   validates_attachment_content_type :object, :content_type=>['application/octet-stream']
+  has_attached_file :image
 
   def to_s
     "#{self.name.downcase}"
