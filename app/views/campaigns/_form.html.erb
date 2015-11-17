@@ -1,31 +1,52 @@
+<br>
+  <div class="container-fluid">
   <%= form_for(@campaign) do |f| %>
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-     <div class="field">
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </div>
-    <div class="field">
-      <%= f.label :length %>
-      <%= f.date_field :length %>
-    </div>
-     <div class="field">
-      <%= f.label :price %>
-      <%= f.number_field :price %>
-    </div>
 
-     <div class="field">
-      <%= f.label :goal %>
-      <%= f.number_field :goal %>
+    <div class="row">
+    <div class="col-md-5">
+      <%= f.text_field :title, class: "form-control", placeholder: "Campaign Title" %>
     </div>
+    </div>
+    <br>
+     <div class="row">
+     <div class="col-md-8">
+      <%= f.text_area :description, class: "form-control", rows: "10" , placeholder: "Description" %>
+    </div>
+    </div>
+    <br>
+    <div class="row">
+    <div class="col-md-2">
+      <%= f.label :length, "Campaign End Date" %>
+      <%= f.date_field :length, class: "form-control", id: "datepicker" %>
+    </div>
+    </div>
+     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+    <br>
+     <div class="row">
+     <div class="col-md-2">
+      <%= f.number_field :price, class: "form-control", placeholder: "Product Price" %>
+    </div>
+    </div>
+    <br>
+     <div class="row">
+     <div class="col-md-2">
+      <%= f.number_field :goal, class: "form-control", placeholder: "Campaign Goal" %>
+    </div>
+    </div>
+    <br>
 
     <%= f.hidden_field :product_id %>
      <%= f.hidden_field :status, value: "on" %>
 
     <p>
-      <%= f.submit %>
+      <%= f.submit "submit", class: "btn btn-default" %>
+      <%= link_to 'Back', designer_dashboard_index_path, class: 'btn btn-default' %>
     </p>
   <% end %>
-
+  </div>
