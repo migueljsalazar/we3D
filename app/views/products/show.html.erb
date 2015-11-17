@@ -1,21 +1,88 @@
- <canvas id="cv" width=640 height=480>
-    It seems you are using an outdated browser that does not support canvas :-(
-    </canvas>
-    <script type="text/javascript">
-        var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-        viewer.setParameter('SceneUrl',         '<%= @product.object.url.gsub(/\?.*/, '') %>');
-        viewer.setParameter('ModelColor',       '#0065ca');
-        viewer.setParameter('BackgroundColor1', '#f2f2f2');
-        viewer.setParameter('RenderMode',       'texturesmooth');
-        viewer.setParameter('CreaseAngle', '20');
-        viewer.setParameter('Renderer', 'webgl');
-        viewer.setParameter('Definition', 'high');
-        viewer.setParameter('Background', 'off');
-        viewer.init();
-        viewer.update();
-    </script>
-    <%= number_to_currency @product.formatted_base_cost %>
+<!-- Page Content -->
+  <div class="container">
+    <!-- Portfolio Item Heading -->
+    <div class="row">
+      <div class="col-md-4 col-md-offset-8">
+        <h1 class="page-header"><%= @product.name %>
+        </h1>
+      </div>
+    </div>
+    <!-- /.row -->
 
-    <%= image_tag @product.image.url %>
-<br><br>
-<%= link_to 'Create Campaign', new_campaign_path(product_id: @product.id) %>
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-responsive img-thumbnail" src="<%= @product.image.url %>" alt="">
+        </div>
+
+        <div class="col-md-4">
+          <h3>Product Attributes</h3>
+          <p><%=  %></p>
+          <p>
+            <strong>Base Cost</strong>
+            <%= number_to_currency @product.basecosteq %>
+          </p>
+          <p>
+            <strong>X</strong>
+            <%=  @product.x %>mm
+          </p>      <p>
+          <strong>Y</strong>
+          <%= @product.y %>mm
+        </p>      <p>
+        <strong>Z</strong>
+        <%= @product.z %>mm
+      </p>
+    </div>
+        </div>
+        <br>
+        <div class="row">
+        <div class="col-md-8">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-block btn-lg " data-toggle="modal" data-target="#myModal">3D Viewer</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">3D Viewer</h4>
+      </div>
+      <div class="modal-body">
+        <canvas id="cv" width=570 height=420>
+            It seems you are using an outdated browser that does not support canvas :-(
+        </canvas>
+        <script type="text/javascript">
+            var viewer = new JSC3D.Viewer(document.getElementById('cv'));
+            viewer.setParameter('SceneUrl',         '<%= @product.object.url.gsub(/\?.*/, '') %>');
+            viewer.setParameter('ModelColor',       '#0065ca');
+            viewer.setParameter('BackgroundColor1', '#f2f2f2');
+            viewer.setParameter('RenderMode',       'texturesmooth');
+            viewer.setParameter('CreaseAngle', '20');
+            viewer.setParameter('Renderer', 'webgl');
+            viewer.setParameter('Definition', 'high');
+            viewer.setParameter('Background', 'off')
+            viewer.init();
+            viewer.update();
+        </script>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+        <hr>
+        <br><br>
+<%= link_to 'Create Campaign', new_campaign_path(product_id: @product.id), class: "btn btn-success btn-lg " %>
+
+    </div>
+    <!-- /.container -->
