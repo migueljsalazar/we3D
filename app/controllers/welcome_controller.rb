@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @campaigns = Campaign.all
+    @campaigns = Campaign.unavailable.on
   end
 end

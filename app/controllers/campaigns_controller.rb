@@ -3,7 +3,7 @@ class CampaignsController < ApplicationController
  before_action :set_campaign, only: [:edit, :update, :destroy]
  # before_action :set_available_campaign, only: [:index]
   def index
-    @campaigns = Campaign.all
+    @campaigns = Campaign.unavailable.on
   end
 
   def show
