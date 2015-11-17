@@ -78,7 +78,7 @@
     </canvas>
     <script type="text/javascript">
         var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-        viewer.setParameter('SceneUrl',         '');
+        viewer.setParameter('SceneUrl',         '<%= @campaigns.first.product.object.url.gsub(/\?.*/, '') %>');
         viewer.setParameter('ModelColor',       '#0065ca');
         viewer.setParameter('BackgroundColor1', '#f2f2f2');
         viewer.setParameter('RenderMode',       'texturesmooth');
@@ -102,7 +102,7 @@
                 <h1>Shop Trending Objects!</h1>
             </div>
             <div class="col-md-4">
-                <a class="btn btn-lg btn-default btn-block" href="">Explore Campaigns!</a>
+                <a class="btn btn-lg btn-default btn-block" href="<%= campaigns_path %>">Explore Campaigns!</a>
             </div>
         </div>
     </div>
@@ -115,7 +115,14 @@
         <div class="col-lg-12">
             <h2 class="page-header">Featured Campaigns</h2>
         </div>
-
+        <% @campaigns.each do |campaign| %>
+        <div class="col-md-4 col-sm-6">
+         <%= link_to campaign do %>
+         <%= image_tag campaign.product.image.url , class: "img-responsive img-thumbnail" %>
+         <% end %>
+         <br><br>
+     </div>
+     <% end %>
      </div>
 
 
