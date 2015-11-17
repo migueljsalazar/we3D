@@ -1,3 +1,5 @@
+<br>
+<div class="container-fluid">
 <%= form_for(@product, multipart: true) do |f| %>
 
   <% if @product.errors.any? %>
@@ -14,39 +16,56 @@
     </div>
   <% end %>
 
-
-  <div class="field">
-    <%= f.label :name%>
-    <%= f.text_field :name %>
+  <div class="row">
+  <div class="col-md-4">
+    <%= f.text_field :name, class: "form-control", placeholder: "Product Name" %>
   </div>
-  <div class="field">
-    <%= f.label :image, 'Image' %>
+  </div>
+  <br>
+  <div class="row">
+  <div class="col-md-5">
+    <%= f.label :image, 'Image Upload' %>
     <%= f.file_field :image %>
   </div>
-   <div class="field">
+  </div>
+  <br>
+  <div class="row">
+  <div class="col-md-5">
+    <%= f.label :object, '3D File Upload' %>
+    <%= f.file_field :object %>
+  </div>
+  </div>
+  <br>
+    <div class="row">
+   <div class="col-md-5">
     <%= f.label :color, 'Color?' %>
     <%= f.check_box :color %>
   </div>
-  <div class="field">
-    <%= f.label :object, '3D File' %>
-    <%= f.file_field :object %>
   </div>
-  <div class="field">
-    <%= f.label :x %>
-    <%= f.number_field :x %>
+  <br>
+  <div class="row">
+  <div class="col-md-1">
+    <%= f.number_field :x, class: "form-control", placeholder: "X" %>
   </div>
-  <div class="field">
-    <%= f.label :y %>
-    <%= f.number_field :y %>
   </div>
-  <div class="field">
-    <%= f.label :z %>
-    <%= f.number_field :z %>
+  <br>
+  <div class="row">
+  <div class="col-md-1">
+    <%= f.number_field :y, class: "form-control", placeholder: "Y" %>
   </div>
+  </div>
+  <br>
+  <div class="row">
+  <div class="col-md-1">
+    <%= f.number_field :z, class: "form-control", placeholder: "Z" %>
+  </div>
+  </div>
+  <br>
 
   <div class="actions">
-    <%= f.submit 'Create a Product' %>
-    <%= link_to 'Nevermind', products_path, class: 'button' %>
+    <%= f.submit 'Submit', class: "btn btn-default" %>
+    <%= link_to 'Back', designer_dashboard_index_path, class: 'btn btn-default' %>
   </div>
 <% end %>
+</div>
 
