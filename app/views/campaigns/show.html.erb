@@ -14,7 +14,7 @@
     <div class="row">
 
         <div class="col-md-8">
-            <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+            <img class="img-responsive img-thumbnail" src="<%= @product.image.url %>" alt="">
         </div>
 
         <div class="col-md-4">
@@ -28,8 +28,51 @@
                 <li>Adipiscing Elit</li>
             </ul>
         </div>
-
         </div>
+        <br>
+        <div class="row">
+        <div class="col-md-8">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-block btn-lg " data-toggle="modal" data-target="#myModal">3D Viewer</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">3D Viewer</h4>
+      </div>
+      <div class="modal-body">
+        <canvas id="cv" width=570 height=420>
+            It seems you are using an outdated browser that does not support canvas :-(
+        </canvas>
+        <script type="text/javascript">
+            var viewer = new JSC3D.Viewer(document.getElementById('cv'));
+            viewer.setParameter('SceneUrl',         '<%= @product.object.url.gsub(/\?.*/, '') %>');
+            viewer.setParameter('ModelColor',       '#0065ca');
+            viewer.setParameter('BackgroundColor1', '#f2f2f2');
+            viewer.setParameter('RenderMode',       'texturesmooth');
+            viewer.setParameter('CreaseAngle', '20');
+            viewer.setParameter('Renderer', 'webgl');
+            viewer.setParameter('Definition', 'high');
+            viewer.setParameter('Background', 'off')
+            viewer.init();
+            viewer.update();
+        </script>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
         <!-- /.row -->
 
         <!-- Related Projects Row -->
