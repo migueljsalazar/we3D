@@ -33,6 +33,7 @@
     It seems you are using an outdated browser that does not support canvas :-(
     </canvas>
     <script type="text/javascript">
+    $(document).on('ready page:load', function() {
         var viewer = new JSC3D.Viewer(document.getElementById('cv'));
         viewer.setParameter('SceneUrl',         '<%= @campaigns.first.product.object.url.gsub(/\?.*/, '') %>');
         viewer.setParameter('ModelColor',       '#0065ca');
@@ -44,6 +45,7 @@
         viewer.setParameter('Background', 'off');
         viewer.init();
         viewer.update();
+    });
     </script>
     </div>
         <div class="col-md-6">

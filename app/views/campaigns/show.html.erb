@@ -23,6 +23,8 @@
   <strong>Price</strong>
   <%= number_to_currency @campaign.formatted_price %>
 </p>
+  <strong>Sold Until</strong>
+  <%= @campaign.length.strftime "%A, %b %d %Y " %>
             <% if @campaign.campaign_off %>
                 <div>
                 <p>

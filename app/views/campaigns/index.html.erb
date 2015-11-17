@@ -1,26 +1,71 @@
-<h1>Campaigns</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Length</th>
-      <th>Price</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+<!-- Page Content -->
+    <div class="container">
 
-  <tbody>
-    <% @campaigns.unavailable.on.each do |campaign| %>
-      <tr>
-        <td><%= campaign.title %></td>
-        <td><%= campaign.description %></td>
-        <td><%= campaign.length %></td>
-        <td><%= campaign.price %></td>
-        <td><%= link_to 'Show', campaign %></td>
-        <td><%= link_to 'Edit', edit_campaign_path(campaign)%></td>
-        <td><%= link_to 'Destroy', campaign, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Campaigns
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+
+        <div class="row">
+            <% @campaigns.each do |campaign| %>
+        <div class="col-md-4 col-sm-6">
+         <%= link_to campaign do %>
+         <%= image_tag campaign.product.image.url , class: "img-responsive img-thumbnail" %>
+         <% end %>
+         </div>
+         <% end %>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Pagination -->
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
