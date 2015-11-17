@@ -1,0 +1,83 @@
+<p id="notice"><%= notice %></p>
+<div>
+<p>
+  <strong>Title:</strong>
+  <%= @campaign.title %>
+</p>
+
+<p>
+  <strong>Description</strong>
+  <%= @campaign.description %>
+</p>
+
+<p>
+  <strong>Length</strong>
+  <%= @campaign.length %>
+</p>
+
+<p>
+  <strong>Price</strong>
+  <%= @campaign.formatted_price %>
+</p>
+<p>
+  <strong>Status</strong>
+  <%= @campaign.status %>
+</p>
+<p>
+  <strong>base cost</strong>
+  <%= @product.formatted_base_cost %>
+</p>
+
+<p>
+  <strong> profit</strong>
+  <%= @campaign.profiteq %>
+</p>
+
+<p>
+  <strong> goal</strong>
+  <%= @campaign.goal %>
+</p>
+
+
+
+<p>
+  <strong>3d object</strong>
+   <canvas id="cv" width=640 height=480>
+    It seems you are using an outdated browser that does not support canvas :-(
+    </canvas>
+    <script type="text/javascript">
+        var viewer = new JSC3D.Viewer(document.getElementById('cv'));
+        viewer.setParameter('SceneUrl',         '<%= @product.object.url.gsub(/\?.*/, '') %>');
+        viewer.setParameter('ModelColor',       '#0065ca');
+        viewer.setParameter('BackgroundColor1', '#f2f2f2');
+        viewer.setParameter('RenderMode',       'texturesmooth');
+        viewer.setParameter('CreaseAngle', '20');
+        viewer.setParameter('Renderer', 'webgl');
+        viewer.setParameter('Definition', 'high');
+        viewer.setParameter('Background', 'off')
+        viewer.init();
+        viewer.update();
+    </script>
+</p>
+</div>
+
+<% if @campaign.campaign_off %>
+<div>
+<p>
+<%# cache do %>
+<%= render 'orders/form' %>
+<%# end %>
+</p>
+</div>
+<% else %>
+<% end %>
+
+<% if current_supplier && @campaign.available? %>
+   <%= form_for(@campaign) do |f| %>
+   <%= f.hidden_field :supplier_id, value: current_supplier.id %>
+    <p>
+      <%= f.submit "Become Supplier", data: { confirm: "Are you sure you would like to be this campaign's supplier?" } %>
+    </p>
+  <% end %>
+<% else %>
+<% end %>
