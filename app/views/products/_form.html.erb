@@ -1,6 +1,6 @@
 <br>
 <div class="container-fluid">
-<%= form_for(@product, multipart: true) do |f| %>
+<%= form_for(@product, multipart: true,) do |f| %>
 
   <% if @product.errors.any? %>
     <div id="error_explanation">
@@ -17,52 +17,34 @@
   <% end %>
 
   <div class="row">
+  <div class="col-md-5">
+    <%= f.label :image, 'Image Upload' %>
+    <%= f.file_field :image, class: "dropzone" %>
+  </div>
+    <div class="col-md-3">
+    <%= f.label :color, 'Color?' %>
+    <%= f.check_box :color %>
+  </div>
   <div class="col-md-4">
     <%= f.text_field :name, class: "form-control", placeholder: "Product Name" %>
   </div>
-  </div>
-  <br>
-  <div class="row">
-  <div class="col-md-5">
-    <%= f.label :image, 'Image Upload' %>
-    <%= f.file_field :image %>
+    <div class="col-md-1">
+    <%= f.number_field :x, class: "form-control", placeholder: "X" %>
+    <br>
+    <%= f.number_field :y, class: "form-control", placeholder: "Y" %>
+    <br>
+    <%= f.number_field :z, class: "form-control", placeholder: "Z" %>
   </div>
   </div>
   <br>
   <div class="row">
   <div class="col-md-5">
     <%= f.label :object, '3D File Upload' %>
-    <%= f.file_field :object %>
+    <%= f.file_field :object, class: "dropzone" %>
   </div>
   </div>
   <br>
-    <div class="row">
-   <div class="col-md-5">
-    <%= f.label :color, 'Color?' %>
-    <%= f.check_box :color %>
-  </div>
-  </div>
-  <br>
-  <div class="row">
-  <div class="col-md-1">
-    <%= f.number_field :x, class: "form-control", placeholder: "X" %>
-  </div>
-  </div>
-  <br>
-  <div class="row">
-  <div class="col-md-1">
-    <%= f.number_field :y, class: "form-control", placeholder: "Y" %>
-  </div>
-  </div>
-  <br>
-  <div class="row">
-  <div class="col-md-1">
-    <%= f.number_field :z, class: "form-control", placeholder: "Z" %>
-  </div>
-  </div>
-  <br>
-
-  <div class="actions">
+  <div class="actions pull-right">
     <%= f.submit 'Submit', class: "btn btn-default" %>
     <%= link_to 'Back', designer_dashboard_index_path, class: 'btn btn-default' %>
   </div>
