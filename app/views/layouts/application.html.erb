@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>We3D</title>
   <%# Bootstrap Styling %>
@@ -15,8 +16,8 @@
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
-<body>
 
+<body>
 <%# Floating NavBar %>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -49,7 +50,38 @@
 <%# Views %>
 <%= yield %>
 
+<footer>
+    <div class="container">
+        <div class="row">
+        <div class="col-md-4">
+            <span class="copyright">Copyright &copy; YouMe3D 2015</span>
+        </div>
+        <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+                <li><a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li><a href="#"><i class="fa fa-github-square"></i></a>
+                </li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+                <li><a href="#">Privacy Policy</a>
+                </li>
+                <li><a href="#">Terms of Use</a>
+                </li>
+                <li><a href="#">Help Guide</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</footer>
+
 <%# Bootstrap Javascript %>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
 </body>
 </html>
