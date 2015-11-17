@@ -7,7 +7,7 @@
 
 <p>
   <strong>Description</strong>
-  <%= @campaign.description %>
+  <%= simple_format(@campaign.description) %>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
 
 <p>
   <strong>Price</strong>
-  <%= @campaign.formatted_price %>
+  <%= number_to_currency @campaign.formatted_price %>
 </p>
 <p>
   <strong>Status</strong>
