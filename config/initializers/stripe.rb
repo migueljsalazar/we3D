@@ -3,7 +3,7 @@ Rails.configuration.stripe = {
   :secret_key      => ENV['SECRET_KEY']
 }
 
-Stripe.api_key = Rails.configuration.stripe[:secret_key]
+# Stripe.api_key = Rails.configuration.stripe[:secret_key]
 
 # Stripe.api_key = Rails.env.production? ?
 #                  Rails.configuration.stripe[:secret_key] :

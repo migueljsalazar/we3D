@@ -1,9 +1,9 @@
 class Product < ActiveRecord::Base
   has_many :campaigns, dependent: :destroy
   belongs_to :designer
-  has_attached_file :object
+  has_attached_file :object, :s3_protocol => :https
   validates_attachment_content_type :object, :content_type=>['application/octet-stream']
-  has_attached_file :image
+  has_attached_file :image, :s3_protocol => :https
 
   def to_s
     "#{self.name.downcase}"

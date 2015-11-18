@@ -47,7 +47,7 @@
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script>
   var handler = StripeCheckout.configure({
-    key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+    key: 'pk_test_uyGISuETRgDbdjs3J2mtpwnX',
     image: '/img/documentation/checkout/marketplace.png',
     locale: 'auto',
     shippingAddress: 'true',
@@ -65,7 +65,7 @@
     handler.open({
       name: 'YouMe3D',
       description: "<%= @campaign.title %>",
-      amount: "<%= @campaign.price*100 %>"
+      amount: "<%= @campaign.price %>"
     });
     e.preventDefault();
   });
