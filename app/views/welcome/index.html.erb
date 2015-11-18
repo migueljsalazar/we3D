@@ -15,7 +15,7 @@
 <!-- /.container -->
 <br>
         <div class="jumbotron">
-                    <h2>Create & sell 3d objects you can be proud of
+                    <h2>Create &amp; sell 3d objects you can be proud of
                     </h2>
                     <p>Sell high-quality 3d objects with zero upfront costs and zero risk. We ship directly to buyers, you keep the profit.</p>
                     <a href="
@@ -32,21 +32,23 @@
              <canvas id="cv" width=550 height=368>
     It seems you are using an outdated browser that does not support canvas :-(
     </canvas>
-    <script type="text/javascript">
-    $(document).on('ready page:load', function() {
-        var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-        viewer.setParameter('SceneUrl',         '<%= @campaigns.first.product.object.url.gsub(/\?.*/, '') %>');
-        viewer.setParameter('ModelColor',       '#0065ca');
-        viewer.setParameter('BackgroundColor1', '#f2f2f2');
-        viewer.setParameter('RenderMode',       'texturesmooth');
-        viewer.setParameter('CreaseAngle', '20');
-        viewer.setParameter('Renderer', 'webgl');
-        viewer.setParameter('Definition', 'high');
-        viewer.setParameter('Background', 'off');
-        viewer.init();
-        viewer.update();
-    });
-    </script>
+    <% if @popular_campaign %>
+        <script type="text/javascript">
+        $(document).on('ready page:load', function() {
+            var viewer = new JSC3D.Viewer(document.getElementById('cv'));
+            viewer.setParameter('SceneUrl',         '<%= @popular_campaign.product.object.url.gsub(/\?.*/, '') %>');
+            viewer.setParameter('ModelColor',       '#0065ca');
+            viewer.setParameter('BackgroundColor1', '#f2f2f2');
+            viewer.setParameter('RenderMode',       'texturesmooth');
+            viewer.setParameter('CreaseAngle', '20');
+            viewer.setParameter('Renderer', 'webgl');
+            viewer.setParameter('Definition', 'high');
+            viewer.setParameter('Background', 'off');
+            viewer.init();
+            viewer.update();
+        });
+        </script>
+    <% end %>
     </div>
         <div class="col-md-6">
         <div class="jumbotron">
@@ -84,13 +86,13 @@
         </div>
         <% @campaigns.each do |campaign| %>
         <div class="col-md-4 col-sm-6">
-         <%= link_to campaign do %>
-         <%= image_tag campaign.product.image.url , class: "img-responsive img-thumbnail" %>
-         <% end %>
-         <br><br>
-     </div>
-     <% end %>
-     </div>
+           <%= link_to campaign do %>
+           <%= image_tag campaign.product.image.url , class: "img-responsive img-thumbnail" %>
+           <% end %>
+           <br><br>
+       </div>
+       <% end %>
+   </div>
 </div>
 <!-- /.container -->
 
