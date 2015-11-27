@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
   has_attached_file :object, :s3_protocol => :https
   validates_attachment_content_type :object, :content_type=>['application/octet-stream']
   has_attached_file :image, :s3_protocol => :https
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def to_s
     "#{self.name.downcase}"
