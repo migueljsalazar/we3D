@@ -5,6 +5,8 @@ class Campaign < ActiveRecord::Base
   has_many :orders
   validates :title, :presence => true, :length => { :in => 2..20 }
   validates :description, :length => {:minimum => 10}
+  validates_datetime :length, :after => lambda { Date.current }
+  validates :price, :goal, numericality: { only_integer: true }, :presence => true
 
   # scope :start, -> {where(start: true)}
   scope :available, -> { where(supplier: nil) }
