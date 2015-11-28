@@ -8,6 +8,13 @@ class Campaign < ActiveRecord::Base
   validates_datetime :length, :after => lambda { Date.current }
   validates :price, :goal, numericality: { only_integer: true }, :presence => true
 
+  before_save :date
+  before_create :date
+
+  def date
+    self.length = self.length.to_date
+  end
+
   # scope :start, -> {where(start: true)}
   scope :available, -> { where(supplier: nil) }
   scope :unavailable, -> { where.not(supplier: nil) }
