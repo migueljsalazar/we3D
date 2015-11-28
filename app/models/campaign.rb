@@ -3,6 +3,8 @@ class Campaign < ActiveRecord::Base
   belongs_to :designer
   belongs_to :supplier
   has_many :orders
+  validates :title, :presence => true, :length => { :in => 2..20 }
+  validates :description, :length => {:minimum => 10}
 
   # scope :start, -> {where(start: true)}
   scope :available, -> { where(supplier: nil) }
