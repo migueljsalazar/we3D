@@ -20,17 +20,20 @@ class Campaign < ActiveRecord::Base
   scope :unavailable, -> { where.not(supplier: nil) }
 
   scope :on, -> {where("length >= ?", Date.today)}
-  scope :backed, -> {where(status: "backed")}
-  scope :off, -> {where("length <= ?", Date.today)}
+  scope :off, -> {where("length < ?", Date.today)}
 
   # scope :campaign_off, -> { where(length: < Date.now) }
 
-  def available?
-    self.supplier.nil?
+  def on?
+    self.length >= Date.today
   end
 
-  def campaign_off
-    self.length >= Date.today
+  def off?
+    self.length < Date.today
+  end
+
+  def available?
+    self.supplier.nil?
   end
 
    def formatted_price

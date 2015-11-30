@@ -20,12 +20,19 @@
             <h3>Product Description</h3>
             <p><%= simple_format(@campaign.description) %></p>
             <p>
-  <strong>Price</strong>
+  <strong>Campaign Status:</strong>
+  <% if @campaign.on? %>
+  On
+  <% elsif @Campaign.off? %>
+  Off
+  <% end %>
+  <br>
+  <strong>Price:</strong>
   <%= number_to_currency @campaign.formatted_price %>
-</p>
-  <strong>Sold Until</strong>
+  <br>
+  <strong>Sold Until:</strong>
   <%= @campaign.length.strftime "%A, %b %d %Y " %>
-            <% if @campaign.campaign_off %>
+            <% if @campaign.on? %>
                 <div>
                 <p>
                 <%# cache do %>
