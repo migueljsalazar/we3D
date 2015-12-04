@@ -10,7 +10,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @order = @campaign.orders.new
     @product = @campaign.product
-    @campaigns = Campaign.all
+    @campaigns = Campaign.unavailable.on
   end
 
   def new
